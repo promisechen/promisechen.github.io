@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gdb速查手册 &mdash; 陈令祥文档系统 1.5.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="陈令祥文档系统 1.5.3 文档" href="../index.html"/>
+        <link rel="up" title="技术知识" href="index.html"/>
+        <link rel="next" title="网络算法学" href="netalgo/index.html"/>
+        <link rel="prev" title="CUnit测试工具" href="cunit.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 陈令祥文档系统
+          
+
+          
+            
+            <img src="../_static/haohan_logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide/index.html">文档编写指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/howto.html">1. 如何用sphinx+reST编写文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id1">1.1. 前言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id2">1.2. 安装软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id3">1.3. 项目建立</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#conf-py">1.4. conf.py配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id4">1.4.1. 主题样式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#logo">1.4.2. LOGO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id5">1.4.3. 不显示源文件链接</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#index">1.5. index页配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id6">1.6. 修改默认样式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step1">1.6.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step2">1.6.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step3">1.6.3. Step3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#api">1.7. 生成API文档</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id7">1.7.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id8">1.7.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id9">1.7.3. Step3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step4">1.7.4. Step4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#pdf">1.8. 生成PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#rest">1.9. reST语法介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id10">1.9.1. 章节标题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id11">1.9.2. 段落</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id12">1.9.3. 行内标记</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id13">1.9.4. 列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id14">1.9.5. 代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id15">1.9.6. 超链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id16">1.9.7. 图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id17">1.9.8. 表格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id18">1.9.9. 引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id19">1.9.10. 脚注</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id20">1.9.11. 提醒</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id21">1.9.12. 替换</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id22">1.10. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/dir_struct.html">2. 目录结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#id2">2.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#xxx">2.2. 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">技术知识</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cunit.html">CUnit测试工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id2">安装配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#id3">从源码编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id4">输出方式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#void-cu-automated-run-tests-void">void CU_automated_run_tests(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#cu-errorcode-cu-list-tests-to-file-void">CU_ErrorCode CU_list_tests_to_file(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#void-cu-set-output-filename-const-char-szfilenameroot">void CU_set_output_filename(const char* szFilenameRoot)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id5">断言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id6">错误处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id7">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">gdb速查手册</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">常见汇编指令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">调试技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">图形界面使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">内存断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">启动自加载断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dmesg">通过dmesg查看段错误位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c">定位到c代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netalgo/index.html">网络算法学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="netalgo/proto_process.html">9 Protocol Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id1">9.1 缓存管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#crcchecksum">9.2 CRC和Checksum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id4">9.3 通用协议处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id5">9.4 重组</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="netalgo/sched_packet.html">14 Scheduling Packets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id1">14.1 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id2">14.2 拥塞控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id13">14.3 带宽与突发限制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id24">14.4 多队列与优先级</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id25">14.5 资源预留协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id26">14.6 带宽保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id30">14.7 时延保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#scalable-fair-queuing">14.8 Scalable Fair Queuing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#dpdk">14.9 dpdk分层调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#diffserv">14.10 DiffServ架构介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#dpdk-qos">14.11 dpdk QoS框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id37">附录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id38">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ntp.html">NTP服务器客户端配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id1">目的</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id2">读者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id3">名词</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id4">专有名词</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id5">服务器/客户端配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id6">服务器端配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id7">客户端配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id8">同步时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ipmi.html">IPMI概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id1">1 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id2">2 名词解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id3">3 主要功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id4">4 IPMI管理工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id5">4.1 安装管理工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id6">4.2 加载IPMI内核</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id7">5 IPMI命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#ipmitool">5.1 ipmitool命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id8">5.2 常用命令模板</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id9">6、远程管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#bmc">6.1 设置BMC信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id10">6.2 配置用户</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id11">6.3 查看bmc信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id12">6.4 远程操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">redis性能测试</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="redis.html#id1">1 测试说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="redis.html#id2">1.1 测试环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="redis.html#id3">1.2 测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="redis.html#id7">1.3.    测试总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html">dpdk源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#log">log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id1">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id2">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id3">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-parse-args">eal_parse_args</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id4">相关的外部接口和变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id5">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id6">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id7">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id8">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id9">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-config-init">rte_config_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id10">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id11">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id12">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id13">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id14">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id15">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-memory-init">rte_eal_memory_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id16">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id17">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id18">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id19">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id20">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id21">主要接口描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id22">样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id23">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id24">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id25">主要接口描述</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/zp/index.html">DPDK Library(转载fromhttps://github.com/zzqcn/)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/eal.html">EAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#linuxeal">Linux环境的EAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id1">内存机制与初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#cpu">CPU信息取得与核绑定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#lcore">线程/lcore的初始化与启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id2">多进程应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id3">其他注意事项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id4">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/ring.html">Ring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id4">应用场景</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id5">无锁队列操作图解</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id6">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id7">多生产者入队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id8">多消费者出队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id9">索引计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id10">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mem.html">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id1">内存的初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id6">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memseg.html">Memseg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id3">初始化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memzone.html">Memzone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#memzone-init">初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id3">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/malloc.html">Malloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap">malloc heap初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap-alloc">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mempool.html">Mempool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id2">特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id4">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id5">创建</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id6">取出对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id7">还回对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id8">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mbuf.html">Mbuf</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id2">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id3">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id4">分配与回收</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id8">元信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#directindirect-mbuf">Direct和Indirect mbuf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id9">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id1">杂记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id2">dpdk示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rst">rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#dpdkmakefile">dpdkmakefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#test-mirror">test-mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#mirror">mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rss">rss</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../suricata/index.html">suricata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html">快速使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html#id2">文件还原的简单实验</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id3">安装部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id4">配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id5">启动</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review_4.0.1.html">suricata4.0.1源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id1">约定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id2">概述及全局观览</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#id3">全局变量</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#main">main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#runmoderegisterrunmodes">RunModeRegisterRunModes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#globalsinitpreconfig">GlobalsInitPreConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#postconfloadedsetup">PostConfLoadedSetup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id4">开源引擎借鉴</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review.html">源码笔记(3.2.1)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id2">调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#tcp">tcp识别总体流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#flow">flow模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id3">TCP重组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id4">协议识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id5">应用识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id6">协议解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cracker/index.html">逆向破解(协议分析方向)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/OD.html">OD使用教程（偏向协议分析）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/crackapp.html">加密协议逆向</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id2">加密数据破解工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#peid">查壳工具&#8211;Peid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id3">脱壳工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id4">反汇编工具</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id5">加密数据解析步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id6">实例讲解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id7">查壳</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#od">OD动态调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#ida">IDA静态分析 提取代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#wireshark">wireshark插件编写(也可以自己写代码)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">陈令祥文档系统</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">技术知识</a> &raquo;</li>
+        
+      <li>gdb速查手册</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gdb">
+<h1>gdb速查手册<a class="headerlink" href="#gdb" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>常用命令<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>常见汇编指令<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">set</span> <span class="pre">disassembly-flavor</span> <span class="pre">intel/att</span></code>  将汇编安装intel或者att格式显示</li>
+<li><code class="docutils literal"><span class="pre">set</span> <span class="pre">disassemble-next-line</span> <span class="pre">on</span></code>  按照汇编显示</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>调试技巧<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h3>图形界面使用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>ctrl+x+a 调出图形界面</li>
+<li>layout asm/src/split/reg 分别调出相关界面，详细help layout</li>
+<li>focus asm/src/split/cmd 分别将焦点定位到命令行</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>内存断点<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">watch</span> <span class="pre">*(unsigned</span> <span class="pre">long*)0x7fffffffe3f0</span> <span class="pre">if</span> <span class="pre">*(unsigned</span> <span class="pre">long*)0x7fffffffe3f0</span> <span class="pre">&gt;</span> <span class="pre">0xffffffff</span></code></p>
+<p>当0x7fffffffe3f0 地址按照unsigned long取值，被写入的数据大于0xffffffff时，被断下.</p>
+<p>经常遇到因为内存而导致段错误，但是根本原因可能不在当前现场。命案现场已经被破坏了，那么我们怎么能获取第一现场呢？ 所以我们经常需要用到内存断点，并且是需要下有条件的内存断点。</p>
+</div>
+<div class="section" id="id6">
+<h3>启动自加载断点<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>GDB使用中比较麻烦的事情，就是每次启动，还要手动敲一把命令，特别是断点比较多的情况，这个特便影响，工作效率。</p>
+<p>查了一下gdb info，gdb支持自动读取一个启动脚本文件.gdbinit，所以经常输入的启动命令， 就都可以写在gdb启动目录的.gdbinit里面。比如</p>
+<p>.gdbinit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>file myapp
+handle SIGPIPE nostop
+break ss.c:100
+break ss.c:200
+run
+</pre></div>
+</div>
+<p>GDB和bash类似，也支持source这个命令，执行另外一个脚本文件。所以可以修改一下.</p>
+<p>.gdbinit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>file myapp
+handle SIGPIPE nostop
+source gdb.break
+run
+
+gdb.break:
+break ss.c:100
+break ss.c:200
+</pre></div>
+</div>
+<p>这样修改的断点配置，只需要编辑gdb.break就可以了。</p>
+<p>偶而还是需要单独启动GDB，不想执行自动脚本，于是又改进了一下。首先把.gdbinit命名为gdb.init，然后定义一个shell alias: $ alias .gdb=”gdb -x gdb.init” 这样如果需要使用自动脚本，就用.gdb命令，否则用gdb进入交互状态的gdb。这样配置以后可以一个简单命令就开始调试，整个效率就能提高不少。</p>
+</div>
+<div class="section" id="dmesg">
+<h3>通过dmesg查看段错误位置<a class="headerlink" href="#dmesg" title="永久链接至标题">¶</a></h3>
+<p>经常遇到的段错误，但是没有挂载gdb，如何定位问题？？同dmesg可以看到更多信息。</p>
+<p>调用dmesg看到如下信息:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>[350082.160832] xdr_formate_0[23239]: segfault at 7ff1b67f5f28 ip 00007ff19ae204f3 sp 00007ff191a53b70 error 4 in general.so[7ff19ae1e000+3000]
+</pre></div>
+</div>
+<p>有几个重要信息可以观测：</p>
+<ul>
+<li><p class="first">error 4 这个4代表用户态读内存越界</p>
+<blockquote>
+<div><p>error number是由三个字位组成的，从高到底分别为bit2 bit1和bit0,所以它的取值范围是0~7.</p>
+<ul class="simple">
+<li>bit2: 值为1表示是用户态程序内存访问越界，值为0表示是内核态程序内存访问越界</li>
+<li>bit1: 值为1表示是写操作导致内存访问越界，值为0表示是读操作导致内存访问越界</li>
+<li>bit0: 值为1表示没有足够的权限访问非法地址的内容，值为0表示访问的非法地址根本没有对应的页面，也就是无效地址</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="c">
+<h1>定位到c代码<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h1>
+<ul>
+<li><dl class="first docutils">
+<dt>通过dmesg信息定位文件偏移</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>bin</dt>
+<dd><p class="first"><code class="docutils literal"><span class="pre">[2721889.027883]</span> <span class="pre">rubicon[25303]:</span> <span class="pre">segfault</span> <span class="pre">at</span> <span class="pre">0</span> <span class="pre">ip</span> <span class="pre">00000000004077b2</span> <span class="pre">sp</span> <span class="pre">00007fff60580a20</span> <span class="pre">error</span> <span class="pre">6</span> <span class="pre">in</span> <span class="pre">rubicon[400000+52000]</span></code></p>
+<p class="last">文件偏移file_offset即为ip，即0x4077b2</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>so</dt>
+<dd><p class="first"><code class="docutils literal"><span class="pre">[2722279.369451]</span> <span class="pre">rubicon[26548]:</span> <span class="pre">segfault</span> <span class="pre">at</span> <span class="pre">0</span> <span class="pre">ip</span> <span class="pre">00007f6c673316cb</span> <span class="pre">sp</span> <span class="pre">00007fff40343330</span> <span class="pre">error</span> <span class="pre">6</span> <span class="pre">in</span> <span class="pre">libstream.so[7f6c6732c000+e000]</span></code></p>
+<p class="last">文件偏移file_offset=ip-动态库基址，即 0x7f6c673316cb - 0x7f6c6732c000</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">由文件偏移(file_offset)定位到c代码或汇编</p>
+<blockquote>
+<div><p>通过上述方法定位到文件偏移地址，在用下面的方法对应到c代码</p>
+<ol class="arabic">
+<li><p class="first">addr2line -e so/bin file_offset</p>
+</li>
+<li><p class="first">gdb bin/so 进入gdb可视化界面，调用 disass file_offset</p>
+</li>
+<li><dl class="first docutils">
+<dt>objdump -S so/bin &gt;tmp.dump 搜索file_offset即可。</dt>
+<dd><div class="first last admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">file_offset是十六进制</p>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p class="first">示例</p>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>dmesg|grep rub</dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">[2722279.369451]</span> <span class="pre">rubicon[26548]:</span> <span class="pre">segfault</span> <span class="pre">at</span> <span class="pre">0</span> <span class="pre">ip</span> <span class="pre">00007f6c673316cb</span> <span class="pre">sp</span> <span class="pre">00007fff40343330</span> <span class="pre">error</span> <span class="pre">6</span> <span class="pre">in</span> <span class="pre">libstream.so[7f6c6732c000+e000]</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>file_offset为</dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">0x7f6c6732c000-0x7f6c6732c000=</span></code></p>
+</dd>
+</dl>
+</li>
+<li><p class="first">定位代码行</p>
+<blockquote>
+<div><ul>
+<li><p class="first">方法一
+source code below</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>[root@vmware promise]# addr2line -e /hs/lib64/libstream.so 0x56cb
+/root/work/xxx/SpotStream.cpp:66
+</pre></div>
+</div>
+</li>
+<li><p class="first">方法二
+source code below</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>gdb /hs/lib64/libstream.so
+disass 0x56cb
+     63     int InitModuleOK()
+     64     {
+     65         int *p = NULL;
+     66         *p = 0;
+     67         printf(&quot;bad\n&quot;);
+     68         FiniStreamCmd();
+     69         return 0;
+     70     }
+</pre></div>
+</div>
+</li>
+<li><p class="first">方法三
+source code below</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>objdump -S /hs/lib64/libstream.so &gt; /tmp/stream.dump
+vim /tmp/stream.dump 搜索0x56cb
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p class="first">实验过程</p>
+<p>source code below</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>段错误代码如下
+484     int *p = NULL;
+485     *p = 0;
+486     printf(&quot;bad\n&quot;);
+</pre></div>
+</div>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>rubicon</dt>
+<dd><p class="first last">rubicon的main中添加了段错误代码</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rubicon调用的动态库</dt>
+<dd><p class="first last">在spotStream.cpp添加段错误代码</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rubicon调用动态库，动态库中又已-l指定</dt>
+<dd><p class="first last">在sniper中的eng.c添加段错误代码
+rubicon会dlopen SpotDpi.so ;
+在dpi的Makefile中又通过-L引用libsniper_x86_64.so</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rubicon调用动态库，动态库又调用动态库</dt>
+<dd><p class="first last">rubicon会dlopen SpotXdr.so;xdr中又dlopen http.so
+在xdr的http.c中添加段错误代码</p>
+</dd>
+</dl>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="netalgo/index.html" class="btn btn-neutral float-right" title="网络算法学" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cunit.html" class="btn btn-neutral" title="CUnit测试工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016-2017, promise.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.3',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

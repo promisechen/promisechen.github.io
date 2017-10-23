@@ -1,0 +1,1040 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>redis性能测试 &mdash; 陈令祥文档系统 1.5.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="陈令祥文档系统 1.5.3 文档" href="../index.html"/>
+        <link rel="up" title="技术知识" href="index.html"/>
+        <link rel="next" title="dpdk相关" href="../dpdk/index.html"/>
+        <link rel="prev" title="IPMI概述" href="ipmi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 陈令祥文档系统
+          
+
+          
+            
+            <img src="../_static/haohan_logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide/index.html">文档编写指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/howto.html">1. 如何用sphinx+reST编写文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id1">1.1. 前言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id2">1.2. 安装软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id3">1.3. 项目建立</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#conf-py">1.4. conf.py配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id4">1.4.1. 主题样式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#logo">1.4.2. LOGO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id5">1.4.3. 不显示源文件链接</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#index">1.5. index页配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id6">1.6. 修改默认样式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step1">1.6.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step2">1.6.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step3">1.6.3. Step3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#api">1.7. 生成API文档</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id7">1.7.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id8">1.7.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id9">1.7.3. Step3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step4">1.7.4. Step4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#pdf">1.8. 生成PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#rest">1.9. reST语法介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id10">1.9.1. 章节标题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id11">1.9.2. 段落</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id12">1.9.3. 行内标记</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id13">1.9.4. 列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id14">1.9.5. 代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id15">1.9.6. 超链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id16">1.9.7. 图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id17">1.9.8. 表格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id18">1.9.9. 引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id19">1.9.10. 脚注</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id20">1.9.11. 提醒</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id21">1.9.12. 替换</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id22">1.10. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/dir_struct.html">2. 目录结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#id2">2.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#xxx">2.2. 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">技术知识</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cunit.html">CUnit测试工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id2">安装配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#id3">从源码编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id4">输出方式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#void-cu-automated-run-tests-void">void CU_automated_run_tests(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#cu-errorcode-cu-list-tests-to-file-void">CU_ErrorCode CU_list_tests_to_file(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cunit.html#void-cu-set-output-filename-const-char-szfilenameroot">void CU_set_output_filename(const char* szFilenameRoot)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id5">断言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id6">错误处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cunit.html#id7">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html">gdb速查手册</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gdb.html#id1">常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gdb.html#id2">常见汇编指令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gdb.html#id3">调试技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gdb.html#id4">图形界面使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gdb.html#id5">内存断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gdb.html#id6">启动自加载断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gdb.html#dmesg">通过dmesg查看段错误位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html#c">定位到c代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netalgo/index.html">网络算法学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="netalgo/proto_process.html">9 Protocol Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id1">9.1 缓存管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#crcchecksum">9.2 CRC和Checksum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id4">9.3 通用协议处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/proto_process.html#id5">9.4 重组</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="netalgo/sched_packet.html">14 Scheduling Packets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id1">14.1 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id2">14.2 拥塞控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id13">14.3 带宽与突发限制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id24">14.4 多队列与优先级</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id25">14.5 资源预留协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id26">14.6 带宽保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id30">14.7 时延保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#scalable-fair-queuing">14.8 Scalable Fair Queuing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#dpdk">14.9 dpdk分层调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#diffserv">14.10 DiffServ架构介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#dpdk-qos">14.11 dpdk QoS框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id37">附录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netalgo/sched_packet.html#id38">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ntp.html">NTP服务器客户端配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id1">目的</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id2">读者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id3">名词</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id4">专有名词</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id5">服务器/客户端配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id6">服务器端配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ntp.html#id7">客户端配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ntp.html#id8">同步时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ipmi.html">IPMI概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id1">1 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id2">2 名词解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id3">3 主要功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id4">4 IPMI管理工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id5">4.1 安装管理工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id6">4.2 加载IPMI内核</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id7">5 IPMI命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#ipmitool">5.1 ipmitool命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id8">5.2 常用命令模板</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ipmi.html#id9">6、远程管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#bmc">6.1 设置BMC信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id10">6.2 配置用户</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id11">6.3 查看bmc信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipmi.html#id12">6.4 远程操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">redis性能测试</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1 测试说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.1 测试环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.2 测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.3.    测试总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html">dpdk源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#log">log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id1">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id2">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id3">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-parse-args">eal_parse_args</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id4">相关的外部接口和变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id5">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id6">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id7">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id8">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id9">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-config-init">rte_config_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id10">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id11">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id12">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id13">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id14">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id15">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-memory-init">rte_eal_memory_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id16">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id17">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id18">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id19">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id20">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id21">主要接口描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id22">样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id23">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id24">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id25">主要接口描述</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/zp/index.html">DPDK Library(转载fromhttps://github.com/zzqcn/)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/eal.html">EAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#linuxeal">Linux环境的EAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id1">内存机制与初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#cpu">CPU信息取得与核绑定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#lcore">线程/lcore的初始化与启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id2">多进程应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id3">其他注意事项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id4">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/ring.html">Ring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id4">应用场景</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id5">无锁队列操作图解</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id6">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id7">多生产者入队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id8">多消费者出队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id9">索引计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id10">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mem.html">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id1">内存的初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id6">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memseg.html">Memseg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id3">初始化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memzone.html">Memzone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#memzone-init">初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id3">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/malloc.html">Malloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap">malloc heap初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap-alloc">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mempool.html">Mempool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id2">特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id4">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id5">创建</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id6">取出对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id7">还回对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id8">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mbuf.html">Mbuf</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id2">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id3">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id4">分配与回收</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id8">元信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#directindirect-mbuf">Direct和Indirect mbuf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id9">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id1">杂记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id2">dpdk示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rst">rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#dpdkmakefile">dpdkmakefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#test-mirror">test-mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#mirror">mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rss">rss</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../suricata/index.html">suricata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html">快速使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html#id2">文件还原的简单实验</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id3">安装部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id4">配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id5">启动</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review_4.0.1.html">suricata4.0.1源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id1">约定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id2">概述及全局观览</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#id3">全局变量</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#main">main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#runmoderegisterrunmodes">RunModeRegisterRunModes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#globalsinitpreconfig">GlobalsInitPreConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#postconfloadedsetup">PostConfLoadedSetup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id4">开源引擎借鉴</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review.html">源码笔记(3.2.1)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id2">调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#tcp">tcp识别总体流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#flow">flow模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id3">TCP重组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id4">协议识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id5">应用识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id6">协议解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cracker/index.html">逆向破解(协议分析方向)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/OD.html">OD使用教程（偏向协议分析）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/crackapp.html">加密协议逆向</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id2">加密数据破解工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#peid">查壳工具&#8211;Peid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id3">脱壳工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id4">反汇编工具</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id5">加密数据解析步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id6">实例讲解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id7">查壳</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#od">OD动态调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#ida">IDA静态分析 提取代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#wireshark">wireshark插件编写(也可以自己写代码)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">陈令祥文档系统</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">技术知识</a> &raquo;</li>
+        
+      <li>redis性能测试</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="redis">
+<h1>redis性能测试<a class="headerlink" href="#redis" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>1 测试说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>1.1 测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>使用工控机10.10.22.114，  Intel(R) Xeon(R) CPU E5-2620 v3 &#64; 2.40GHz</li>
+<li>Redis版本3.2.3</li>
+<li>使用默认配置做测试</li>
+<li>使用redis自带的测试工具，以及自己写的小程序进行测试。</li>
+<li>测试用例层层深入，请按顺序阅读。</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h3>1.2 测试用例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="section" id="rediskey-urlhostkey">
+<h4>1.2.1 验证redis支持的key长度，保证以URL、HOST为key可行<a class="headerlink" href="#rediskey-urlhostkey" title="永久链接至标题">¶</a></h4>
+<p>【测试说明】</p>
+<ol class="arabic simple">
+<li>在http协议中并没有对url长度作出限制，往往url的最大长度和用户浏览器和Web服务器有关。以IE浏览器为例，URL的最大限制为2083个字符，如果超过这个数字，提交按钮没有任何反应。</li>
+<li>未找到文档里对key名的长度的限制说明，只说明了key值的大小最大能存储512MB。这里不对key值做验证，只对key名的长度做验证。</li>
+</ol>
+<p>【测试结果】</p>
+<blockquote>
+<div>使用redis-cli命令行进行测试，由于该工具的输入限制，提供输入的最长命令的字符为4095，除去命令的其它关键字，这里使用4086个字符作为key名，测试结果可以正常设置、读取。</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用C语言接口是否能设置、读取更长的key名未做测试，因为4086已经够用了。该值超过常用URL的长度，因此认为Key名长度能够满足需求。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h4>1.2.2 内存占用测试<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p>【测试说明】</p>
+<blockquote>
+<div><p>首先使用自己写的小程序插入数据，再用redis-cli查看内存占用情况。这里使用“集合”数据结构，因为在审计功能中比较可能用到它（一个key对应多个无序value，也就是一个URL对应多个关键字或策略ID）。</p>
+<p>测试所用数据：key个数200w，每个key名长度长度200字节左右，每个键下挂载20个value，每个value占用64个字节。</p>
+</div></blockquote>
+<p>【测试结果】</p>
+<ul class="simple">
+<li>插入数据前：793.20K</li>
+<li>插入数据后：901.78M</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h4>1.2.3 使用redis自带测试程序测试性能<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<p>【测试说明】</p>
+<ol class="arabic simple">
+<li>使用redis-benchmark命令进行性能测试，测试参数包括：请求数、并发数、数据大小、使用TCP或Unix socket、管道技术等。</li>
+<li>以下为redis-benchmark测试用到的参数说明</li>
+</ol>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>指定请求数</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>以字节的形式指定 SET/GET 值的数据大小</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-k</span></kbd></td>
+<td>0表示每次请求重新连接，1表示保持持续连接</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>SET/GET/INCR 使用随机 key, SADD 使用随机值</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span></kbd></td>
+<td>指定并发连接数</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>指定服务器 socket</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>仅运行以逗号分隔的测试命令列表</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-P</span></kbd></td>
+<td>通过管道传输 &lt;numreq&gt; 请求</td></tr>
+</tbody>
+</table>
+<p>【测试结果】</p>
+<ol class="arabic simple">
+<li>使用TCP或Unix socket模式，测试所用数据：key个数200w，value大小20，并发20，持久连接（连接一次发送所有数据），测试所有支持数据类型的常用操作。</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">通过查看源码，这里的并发并不是多线程或多进程并行操作，实际上是通过在一个进程里创建多个socket异步发送、读取数据。</p>
+</div>
+<p>测试命令：</p>
+<ul class="simple">
+<li>TCP：redis-benchmark -n 2000000 -d 20 -c 20 -k 1</li>
+<li>Unix socket：redis-benchmark -n 2000000 -d 20 -c 20 -k 1 -s /tmp/redis.sock</li>
+</ul>
+<p>通过下表对比，在单机上使用unix socket的读写速度明显高于TCP。其中比较关心的“集合”数据结构的操作：SADD（插入）在unix socket，并发20的情况下达到了24.4万每秒，SPOP（返回一个数据并删除）达到了24.1万每秒。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">该命令未提供“SMEMBER（返回集合所有数据）”的测试数据，但是在下文会提供c代码的测试情况。</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="39%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">TCP</th>
+<th class="head">Unix socket</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PING_INLINE</td>
+<td>completed in 13.64 seconds
+146616.81 requests per second</td>
+<td>completed in 10.63 seconds
+188182.16 requests per second</td>
+</tr>
+<tr class="row-odd"><td>PING_BULK</td>
+<td>completed in 13.82 seconds
+144728.27 requests per second</td>
+<td>completed in 10.81 seconds
+184928.34 requests per second</td>
+</tr>
+<tr class="row-even"><td>SET</td>
+<td>completed in 13.69 seconds
+146081.38 requests per second</td>
+<td>completed in 10.81 seconds
+184928.34 requests per second</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>completed in 13.77 seconds
+145264.39 requests per second</td>
+<td>completed in 10.77 seconds
+185787.27 requests per second</td>
+</tr>
+<tr class="row-even"><td>INCR</td>
+<td>completed in 13.68 seconds
+146230.89 requests per second</td>
+<td>completed in 10.65 seconds
+187775.80 requests per second</td>
+</tr>
+<tr class="row-odd"><td>LPUSH</td>
+<td>completed in 13.51 seconds
+148093.30 requests per second</td>
+<td>completed in 10.49 seconds
+190712.30 requests per second</td>
+</tr>
+<tr class="row-even"><td>RPUSH</td>
+<td>completed in 13.50 seconds
+148192.05 requests per second</td>
+<td>completed in 10.44 seconds
+191497.50 requests per second</td>
+</tr>
+<tr class="row-odd"><td>LPOP</td>
+<td>completed in 13.58 seconds
+147253.72 requests per second</td>
+<td>completed in 8.08 seconds
+247524.75 requests per second</td>
+</tr>
+<tr class="row-even"><td>RPOP</td>
+<td>completed in 13.87 seconds
+144216.91 requests per second</td>
+<td>completed in 8.15 seconds
+245549.41 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SADD</td>
+<td>completed in 13.63 seconds
+146713.61 requests per second</td>
+<td>completed in 8.18 seconds
+244439.00 requests per second</td>
+</tr>
+<tr class="row-even"><td>SPOP</td>
+<td>completed in 13.57 seconds
+147427.39 requests per second</td>
+<td>completed in 8.29 seconds
+241283.64 requests per second</td>
+</tr>
+<tr class="row-odd"><td>LPUSH</td>
+<td>completed in 13.62 seconds
+146853.66 requests per second</td>
+<td>completed in 7.93 seconds
+252175.00 requests per second</td>
+</tr>
+<tr class="row-even"><td>LRANGE_100</td>
+<td>completed in 37.52 seconds
+53303.48 requests per second</td>
+<td>completed in 31.94 seconds
+62611.52 requests per second</td>
+</tr>
+<tr class="row-odd"><td>LRANGE_300</td>
+<td>completed in 110.12 seconds
+18162.17 requests per second</td>
+<td>completed in 104.21 seconds
+19191.83 requests per second</td>
+</tr>
+<tr class="row-even"><td>LRANGE_500</td>
+<td>completed in 171.87 seconds
+11637.04 requests per second</td>
+<td>completed in 165.77 seconds
+12064.76 requests per second</td>
+</tr>
+<tr class="row-odd"><td>LRANGE_600</td>
+<td>completed in 226.59 seconds
+8826.67 requests per second</td>
+<td>completed in 221.31 seconds
+9037.06 requests per second</td>
+</tr>
+<tr class="row-even"><td>MSET (10 keys)</td>
+<td>completed in 17.73 seconds
+112784.08 requests per second</td>
+<td>completed in 221.31 seconds
+9037.06 requests per second</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="2">
+<li>同样是200w数据，但是将请求并发数降为1的情况下再进行测试。（这里只测试SADD和SPOP操作）</li>
+</ol>
+<p>测试命令：</p>
+<ul class="simple">
+<li>TCP：redis-benchmark -n 2000000 -d 20 -c 1 -k 1 -t SADD,SPOP</li>
+<li>Unix socket：redis-benchmark -n 2000000 -d 20 -c 1 -k 1 -s /tmp/redis.sock -t SADD,SPOP</li>
+</ul>
+<p>做这个测试是因为看源码所谓的并发不是非多线程/多进程操作，只是多连接异步读写。因此想看下在单连接的情况下的读写性能。通过下表看出，单连接的读写速度明显降低。其中Unix socket性能下降了68%。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="39%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">Unix socket（20并发）</th>
+<th class="head">Unix socket（1并发）</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SADD</td>
+<td>completed in 8.18 seconds
+244439.00 requests per second</td>
+<td>completed in 26.03 seconds
+76846.23 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SPOP</td>
+<td>completed in 8.29 seconds
+241283.64 requests per second</td>
+<td>completed in 25.32 seconds
+78985.83 requests per second</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="3">
+<li>同样是200w数据，还是20并发，但是使用管道技术，即每次请求处理多条命令。这里只测试SADD和SPOP操作，每次请求处理10条命令，通过下表发现，使用管道技术后SADD达到了103.8万每秒，性能提升约425%，SPOP达到了134.1万每秒，提升了555%。</li>
+</ol>
+<p>测试命令：</p>
+<ul class="simple">
+<li>redis-benchmark -n 2000000 -d 20 -c 20 -k 1 -s /tmp/redis.sock -t sadd,spop -P 10</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="40%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">Unix socket（普通20并发）</th>
+<th class="head">Unix socket（20并发+管道10命令）</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SADD</td>
+<td>completed in 8.18 seconds
+244439.00 requests per second</td>
+<td>completed in 1.92 seconds
+1038961.06 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SPOP</td>
+<td>completed in 8.29 seconds
+241283.64 requests per second</td>
+<td>completed in 1.49 seconds
+1341381.62 requests per second</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h4>1.2.4 写测试小程序测试性能<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
+<p>【测试说明】</p>
+<ol class="arabic simple">
+<li>这里只测试Unix socket。</li>
+<li>使用o3编译，测试前先清空redis数据。</li>
+<li>使用阻塞/非阻塞（Non-Block socket）连接、调用原生API/改进后的API、并发1/并发20的情况进行对比。</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">redis自带测试程序使用的是非阻塞连接，异步处理。</p>
+</div>
+<p>【测试结果】</p>
+<p>1. 并发1，阻塞连接/非阻塞、调用原生API。
+为了与redis自带测试程序进行对比，这里测试所用数据相同，200w个key，每个key对应1个value，数据大小20，持久连接。对于阻塞和非阻塞的区别，主要在于非阻塞连接在执行完命令后立刻返回，不等待结果命令的返回结果。通过以下测试数据可以看出：</p>
+<p>首先，对于set/sadd设置类命令，非阻塞速度提升了约210%</p>
+<p>其次，小程序未对get、smembers、spop这类需要返回结果的命令做异步读取处理，表中XXX部分只计算了执行完命令的时间，因此不做参考。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="44%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">阻塞连接</th>
+<th class="head">非阻塞</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SET</td>
+<td>35.38 seconds, 56529.11 requests per second</td>
+<td>11.39 seconds, 175654.31 requests per second</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>30.71 seconds, 65116.88 requests per second</td>
+<td>XXX</td>
+</tr>
+<tr class="row-even"><td>SADD</td>
+<td>35.67 seconds, 56071.10 requests per second</td>
+<td>11.12 seconds, 179920.83 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SMEMBERS</td>
+<td>35.30 seconds, 56662.04 requests per second</td>
+<td>XXX</td>
+</tr>
+<tr class="row-even"><td>SPOP</td>
+<td>34.32 seconds, 58281.85 requests per second</td>
+<td>XXX</td>
+</tr>
+</tbody>
+</table>
+<p>2. 并发1，阻塞连接，原生API/改进的API。
+上一个测试例中已经说明了，阻塞与非阻塞主要区别在于是否等待返回，对于“读取”类的API在应用中是需要等待返回的，而“设置”类API可以不需要等待返回。因此对原生API做了些改进，通过对.h文件里提供的其他API重新组合封装成“改进API”，使得“设置”类的API即使在建立阻塞连接时，也仅发送不等待返回。
+在建立阻塞连接时，测试结果如下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="38%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">原生API</th>
+<th class="head">改进API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SET</td>
+<td>35.38 seconds, 56529.11 requests per second</td>
+<td>11.41 seconds, 175346.31 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SADD</td>
+<td>35.67 seconds, 56071.10 requests per second</td>
+<td>11.02 seconds, 181504.67 requests per second</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="3">
+<li>接下来测试20个线程并发的情况，每个线程绑定一个core，建立阻塞连接，“读取”类使用原生API，“写入”类使用改进API。测试结果如下：</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">测试结果</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SET</td>
+<td>completed 2000000 times in 6.01 seconds，332612.67 requests per second</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>completed 2000000 times in 10.50 seconds，190421.78 requests per second</td>
+</tr>
+<tr class="row-even"><td>SADD</td>
+<td>completed 2000000 times in 6.71 seconds，298195.91 requests per second</td>
+</tr>
+<tr class="row-odd"><td>SMEMBERS</td>
+<td>completed 2000000 times in 14.22 seconds，140607.42 requests per second</td>
+</tr>
+<tr class="row-even"><td>SPOP</td>
+<td>completed 2000000 times in 14.38 seconds，139082.06 requests per second</td>
+</tr>
+</tbody>
+</table>
+<p>4. 在以上测试基础上，使用管道（不确定在审计里是否能用得到），缓存10条命令再发送。
+通过下表看出，性能有所提升，约10%。与redis自带测试程序的555%提升相差甚远。原因暂时不明，因为redis自带测试程序是异步处理？还是因为我调用方式不对？后续若有用到管道技术，可以再补充测试一下。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="42%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令</th>
+<th class="head">一次发一条命令</th>
+<th class="head">一次发10条命令</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SET</td>
+<td>completed 2000000 times in 6.01 seconds
+332612.67 requests per second</td>
+<td>completed 2000000 times in 5.44 seconds
+367917.59 requests</td>
+</tr>
+<tr class="row-odd"><td>SADD</td>
+<td>completed 2000000 times in 6.71 seconds
+298195.91 requests per second</td>
+<td>completed 2000000 times in 6.14 seconds,
+325892.13 requests per second</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>1.3.    测试总结<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">key长度能够满足需求</p>
+</li>
+<li><p class="first">内存使用情况：在“key个数200w，每个key名长度长度200字节左右，每个键下挂载20个value，每个value占用64个字节”的测试条件下，占用约900M内存。</p>
+</li>
+<li><p class="first">使用redis自带测试程序测试性能：</p>
+<blockquote>
+<div><ul class="simple">
+<li>Unix socket比TCP快，并发（多client异步通信，非多线程/多进程）比单client快。</li>
+<li>在20个client，unix socket，“集合数据结构”命令SADD（插入）达到 24.4万每秒 ，SPOP（取出并删除一条数据）达到24.1万每秒。</li>
+<li>在使用管道（一次处理10条命令），SADD达到了 103万每秒  SPOP 134万每秒。</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">自己写小程序验证，在unix scoket、20线程绑定不同core下的并发：</p>
+<blockquote>
+<div><ul class="simple">
+<li>使用改进API ，SADD （插入）达到了29.8万每秒，SMEMBERS（读取key所有集合成员）达到了14万每秒，SPOP（读取并删除一条数据）13.9万。</li>
+<li>在使用管道（每次发送10条数据），性能无显提升（提升10%），与redis自带测试程序的555%提升相差甚远，原因暂时不明。可能与自带测试程序是异步处理有关，也有可能是因为我调用方式的不对。若有用到管道技术再补充测试。</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dpdk/index.html" class="btn btn-neutral float-right" title="dpdk相关" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ipmi.html" class="btn btn-neutral" title="IPMI概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016-2017, promise.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.3',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
