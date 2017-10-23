@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>源码笔记 &mdash; 陈令祥文档系统 1.5.3 文档</title>
+  <title>源码笔记(3.2.1) &mdash; 陈令祥文档系统 1.5.3 文档</title>
   
 
   
@@ -36,6 +36,7 @@
   
     <link rel="top" title="陈令祥文档系统 1.5.3 文档" href="../index.html"/>
         <link rel="up" title="suricata" href="index.html"/>
+        <link rel="next" title="逆向破解(协议分析方向)" href="../cracker/index.html"/>
         <link rel="prev" title="suricata4.0.1源码分析" href="review_4.0.1.html"/> 
 
   
@@ -254,56 +255,57 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html">log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#id1">样例</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id2">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id3">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id4">主要接口描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html">dpdk源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#log">log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id1">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id2">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id3">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id5">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id6">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id7">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-parse-args">eal_parse_args</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id4">相关的外部接口和变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id5">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id6">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#eal-parse-args">eal_parse_args</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id8">相关的外部接口和变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id9">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id10">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id7">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id8">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id9">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id11">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id12">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id13">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-config-init">rte_config_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id10">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id11">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id12">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-config-init">rte_config_init</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id14">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id15">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id16">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id13">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id14">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id15">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id17">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id18">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id19">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-memory-init">rte_eal_memory_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id16">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id17">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id18">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-memory-init">rte_eal_memory_init</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id20">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id21">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id22">主要接口描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id19">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id20">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id21">主要接口描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id22">样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id23">相关的外部接口及变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id24">函数调用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/init.html#id25">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id23">相关的外部接口及变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id24">函数调用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id25">主要接口描述</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../dpdk/zp/index.html">DPDK Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/zp/index.html">DPDK Library(转载fromhttps://github.com/zzqcn/)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/eal.html">EAL</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#linuxeal">Linux环境的EAL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id1">内存机制与初始化</a></li>
@@ -375,6 +377,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id1">杂记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/index.html#id2">dpdk示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rst">rst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#dpdkmakefile">dpdkmakefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#test-mirror">test-mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#mirror">mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/index.html#rss">rss</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">suricata</a><ul class="current">
@@ -400,7 +411,7 @@
 <li class="toctree-l3"><a class="reference internal" href="review_4.0.1.html#id4">开源引擎借鉴</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">源码笔记</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">源码笔记(3.2.1)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">调试</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tcp">tcp识别总体流程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flow">flow模块</a></li>
@@ -408,6 +419,27 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">协议识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">应用识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">协议解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cracker/index.html">逆向破解(协议分析方向)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/OD.html">OD使用教程（偏向协议分析）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cracker/crackapp.html">加密协议逆向</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id2">加密数据破解工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#peid">查壳工具&#8211;Peid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id3">脱壳工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id4">反汇编工具</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id5">加密数据解析步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cracker/crackapp.html#id6">实例讲解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#id7">查壳</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#od">OD动态调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#ida">IDA静态分析 提取代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cracker/crackapp.html#wireshark">wireshark插件编写(也可以自己写代码)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -458,7 +490,7 @@
         
           <li><a href="index.html">suricata</a> &raquo;</li>
         
-      <li>源码笔记</li>
+      <li>源码笔记(3.2.1)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -476,7 +508,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>源码笔记<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>源码笔记(3.2.1)<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
 <h2>调试<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <blockquote>
@@ -560,28 +592,35 @@ FlowWorker-&gt;DetectNoFlow-&gt;SigMatchSignatures-&gt;DeStateDetectStartDetecti
 <div class="section" id="id4">
 <h2>协议识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>alpd_ctx是协议识别的全局变量，存放了各种协议识别使用的数据：如字符串，状态机等</p>
-<p>协议识别&#8211;识别过程
-AppLayerProtoDetectGetProto -&gt; AppLayerProtoDetectPMGetProto:通过特征串匹配  ，这个就是一个匹配，代码也不多</p>
+<p>协议识别&#8211;识别过程</p>
 <blockquote>
-<div>-&gt; AppLayerProtoDetectPPGetProto:通过探测方式识别，主动发送报文探测结果</div></blockquote>
-<p>AppLayerParserParse；这个没有在分析</p>
-<p>协议识别&#8211;初始化过程(特征串方式):
-AppLayerSetup -&gt; AppLayerProtoDetectSetup:初始化单模多模算法等</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="docutils">
-<dt>AppLayerParserRegisterProtocolParsers:各协议添加字符串,会调用个协议的RegisterxxxxxParsers.</dt>
-<dd>他们最终都会调用AppLayerProtoDetectPMRegisterPatternCS 和
-AppLayerProtoDetectPMRegisterPatternCI注册字符串,而这两个函数最终都会掉AppLayerProtoDetectPMAddSignature。
-比如:RegisterHTPParsers-&gt;HTPRegisterPatternsForProtocolDetection -&gt;AppLayerProtoDetectPMRegisterPatternCI</dd>
-</dl>
+<div><div class="line-block">
+<div class="line">AppLayerProtoDetectGetProto -&gt; AppLayerProtoDetectPMGetProto:通过特征串匹配  ，这个就是一个匹配，代码也不多
+| -&gt; AppLayerProtoDetectPPGetProto:通过探测方式识别，主动发送报文探测结果</div>
+</div>
 </div></blockquote>
+<p>AppLayerParserParse；这个没有在分析</p>
 <dl class="docutils">
+<dt>协议识别&#8211;初始化过程(特征串方式):</dt>
+<dd><dl class="first last docutils">
+<dt>AppLayerSetup -&gt; AppLayerProtoDetectSetup:初始化单模多模算法等</dt>
+<dd><dl class="first last docutils">
+<dt>AppLayerParserRegisterProtocolParsers:各协议添加字符串,会调用个协议的RegisterxxxxxParsers.</dt>
+<dd><blockquote class="first">
+<div>他们最终都会调用AppLayerProtoDetectPMRegisterPatternCS 和
+AppLayerProtoDetectPMRegisterPatternCI注册字符串,而这两个函数最终都会掉AppLayerProtoDetectPMAddSignature。
+比如:RegisterHTPParsers-&gt;HTPRegisterPatternsForProtocolDetection -&gt;AppLayerProtoDetectPMRegisterPatternCI</div></blockquote>
+<dl class="last docutils">
 <dt>AppLayerProtoDetectPrepareState：添加特征到状态机并编译</dt>
 <dd>-&gt;AppLayerProtoDetectPMMapSignatures :添加到状态机
 -&gt;AppLayerProtoDetectPMPrepareMpm :编译</dd>
 </dl>
-</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
 <p>协议识别&#8211;初始化过程(探测方式):</p>
 <p>通过如下调用，将注册探测函数。如RegisterDNSUDPParsers中注册了DNSUdpProbingParser探测函数
 AppLayerProtoDetectPPParseConfPorts-&gt;AppLayerProtoDetectPPRegister
@@ -601,13 +640,9 @@ DetectHttpUriRegister注册uri的识别方法。最终进行识别的是Prefilte
 <li>先调用SigMatchSignatures</li>
 <li>在依次调用Prefilter和PrefilterTx</li>
 </ul>
-<blockquote>
-<div><p>在PrefilterTx 中调用AppLayerParserGetTx（StateGetTx） 获取到识别需要用到的相关字段值，在调用PrefilterTx进行相应方法的识别。
-这里是个重点, 对协议解析部分分析的时候会对StateGetTx详细阐述。</p>
-</div></blockquote>
+<p>&nbsp;  在PrefilterTx 中调用AppLayerParserGetTx（StateGetTx）获取到识别需要用到的相关字段值，在调用PrefilterTx进行相应方法的识别。  这里是个重点, 对协议解析部分分析的时候会对StateGetTx详细阐述。</p>
 <ul class="last simple">
-<li>在调用PrefilterTxUri和DetectEngineInspectHttpUri
-通过streamTcp之后，就会把http的头部信息解析完了，会将uri传到这个PrefilterTxUri函数中。</li>
+<li>在调用PrefilterTxUri和DetectEngineInspectHttpUri 通过streamTcp之后，就会把http的头部信息解析完了，会将uri传到这个PrefilterTxUri函数中。</li>
 </ul>
 </dd>
 </dl>
@@ -716,6 +751,8 @@ at flow-worker.c:194
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cracker/index.html" class="btn btn-neutral float-right" title="逆向破解(协议分析方向)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="review_4.0.1.html" class="btn btn-neutral" title="suricata4.0.1源码分析" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
