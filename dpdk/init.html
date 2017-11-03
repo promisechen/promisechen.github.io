@@ -1,0 +1,1101 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>log &mdash; 陈令祥文档系统 1.5.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="陈令祥文档系统 1.5.3 文档" href="../index.html"/>
+        <link rel="up" title="dpdk相关" href="index.html"/>
+        <link rel="next" title="DPDK Library" href="zp/index.html"/>
+        <link rel="prev" title="dpdk相关" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 陈令祥文档系统
+          
+
+          
+            
+            <img src="../_static/haohan_logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide/index.html">文档编写指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/howto.html">1. 如何用sphinx+reST编写文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id1">1.1. 前言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id2">1.2. 安装软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id3">1.3. 项目建立</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#conf-py">1.4. conf.py配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id4">1.4.1. 主题样式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#logo">1.4.2. LOGO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id5">1.4.3. 不显示源文件链接</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#index">1.5. index页配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id6">1.6. 修改默认样式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step1">1.6.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step2">1.6.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step3">1.6.3. Step3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#api">1.7. 生成API文档</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id7">1.7.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id8">1.7.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id9">1.7.3. Step3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step4">1.7.4. Step4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#pdf">1.8. 生成PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#rest">1.9. reST语法介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id10">1.9.1. 章节标题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id11">1.9.2. 段落</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id12">1.9.3. 行内标记</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id13">1.9.4. 列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id14">1.9.5. 代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id15">1.9.6. 超链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id16">1.9.7. 图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id17">1.9.8. 表格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id18">1.9.9. 引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id19">1.9.10. 脚注</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id20">1.9.11. 提醒</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id21">1.9.12. 替换</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id22">1.10. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/dir_struct.html">2. 目录结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#id2">2.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#xxx">2.2. 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kbase/index.html">技术知识</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/cunit.html">CUnit测试工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id2">安装配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#id3">从源码编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id4">输出方式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#void-cu-automated-run-tests-void">void CU_automated_run_tests(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#cu-errorcode-cu-list-tests-to-file-void">CU_ErrorCode CU_list_tests_to_file(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#void-cu-set-output-filename-const-char-szfilenameroot">void CU_set_output_filename(const char* szFilenameRoot)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id5">断言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id6">错误处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id7">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/gdb.html">gdb速查手册</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/gdb.html#id1">常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id2">常见汇编指令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/gdb.html#id3">调试技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id4">图形界面使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id5">内存断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id6">启动自加载断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#dmesg">通过dmesg查看段错误位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/gdb.html#c">定位到c代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/netalgo/index.html">网络算法学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/netalgo/proto_process.html">9 Protocol Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id1">9.1 缓存管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#crcchecksum">9.2 CRC和Checksum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id4">9.3 通用协议处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id5">9.4 重组</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/netalgo/sched_packet.html">14 Scheduling Packets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id1">14.1 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id2">14.2 拥塞控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id13">14.3 带宽与突发限制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id24">14.4 多队列与优先级</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id25">14.5 资源预留协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id26">14.6 带宽保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id30">14.7 时延保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#scalable-fair-queuing">14.8 Scalable Fair Queuing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#dpdk">14.9 dpdk分层调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#diffserv">14.10 DiffServ架构介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#dpdk-qos">14.11 dpdk QoS框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id37">附录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id38">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/ntp.html">NTP服务器客户端配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id1">目的</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id2">读者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id3">名词</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id4">专有名词</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id5">服务器/客户端配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id6">服务器端配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id7">客户端配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id8">同步时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/ipmi.html">IPMI概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id1">1 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id2">2 名词解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id3">3 主要功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id4">4 IPMI管理工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id5">4.1 安装管理工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id6">4.2 加载IPMI内核</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id7">5 IPMI命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#ipmitool">5.1 ipmitool命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id8">5.2 常用命令模板</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id9">6、远程管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#bmc">6.1 设置BMC信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id10">6.2 配置用户</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id11">6.3 查看bmc信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id12">6.4 远程操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/redis.html">redis性能测试</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/redis.html#id1">1 测试说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id2">1.1 测试环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id3">1.2 测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id7">1.3.    测试总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">dpdk相关</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">样例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eal-parse-args">eal_parse_args</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">相关的外部接口和变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rte-config-init">rte_config_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rte-eal-memory-init">rte_eal_memory_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zp/index.html">DPDK Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zp/eal.html">EAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#linuxeal">Linux环境的EAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#id1">内存机制与初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#cpu">CPU信息取得与核绑定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#lcore">线程/lcore的初始化与启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#id2">多进程应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#id3">其他注意事项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/eal.html#id4">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/ring.html">Ring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id4">应用场景</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id5">无锁队列操作图解</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id6">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id7">多生产者入队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id8">多消费者出队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id9">索引计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/ring.html#id10">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/mem.html">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/mem.html#id1">内存的初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mem.html#id6">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/memseg.html">Memseg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/memseg.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memseg.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memseg.html#id3">初始化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/memzone.html">Memzone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/memzone.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memzone.html#memzone-init">初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memzone.html#id3">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memzone.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/memzone.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/malloc.html">Malloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#malloc-heap">malloc heap初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#malloc-heap-alloc">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/malloc.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/mempool.html">Mempool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id2">特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id4">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id5">创建</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id6">取出对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id7">还回对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mempool.html#id8">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zp/mbuf.html">Mbuf</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id2">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id3">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id4">分配与回收</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id8">元信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#directindirect-mbuf">Direct和Indirect mbuf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zp/mbuf.html#id9">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../suricata/index.html">suricata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html">快速使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/quick_start.html#id2">文件还原的简单实验</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id3">安装部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id4">配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/quick_start.html#id5">启动</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review_4.0.1.html">suricata4.0.1源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id1">约定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id2">概述及全局观览</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#id3">全局变量</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#main">main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#runmoderegisterrunmodes">RunModeRegisterRunModes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#globalsinitpreconfig">GlobalsInitPreConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../suricata/review_4.0.1.html#postconfloadedsetup">PostConfLoadedSetup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review_4.0.1.html#id4">开源引擎借鉴</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../suricata/review.html">源码笔记</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id2">调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#tcp">tcp识别总体流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#flow">flow模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id3">TCP重组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id4">协议识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id5">应用识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../suricata/review.html#id6">协议解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">陈令祥文档系统</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">dpdk相关</a> &raquo;</li>
+        
+      <li>log</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><a class="reference external" href="http://www.cnblogs.com/MerlinJ/p/4074391.html">http://www.cnblogs.com/MerlinJ/p/4074391.html</a></p>
+<p><a class="reference external" href="http://www.cnblogs.com/ding-linux-coder/p/4922583.html">http://www.cnblogs.com/ding-linux-coder/p/4922583.html</a></p>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="永久链接至标题">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>样例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>函数调用<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>主要接口描述<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rte-eal-cpu-init">
+<h1>rte_eal_cpu_init<a class="headerlink" href="#rte-eal-cpu-init" title="永久链接至标题">¶</a></h1>
+<p>该函数主要是解析/sys/devices/system/cpu文件，获取物理及逻辑核心，并填充cpu_info信息。</p>
+<p>主要设置了全局变量rte_config的lcore_count lcore_role,该字段是当前机器所有逻辑核心数。</p>
+<p>设置了全局变量lcore_config的core cpu_set相关信息</p>
+<p>该函数将输出如下信息</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>EAL: Detected lcore 0 as core 0 on socket 0
+EAL: Detected lcore 1 as core 0 on socket 0
+EAL: Detected lcore 2 as core 0 on socket 0
+EAL: Detected lcore 3 as core 0 on socket 0
+EAL: Support maximum 128 logical core(s) by configuration.
+EAL: Detected 4 lcore(s)
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>rte_config</p>
+<p>lcore_config</p>
+<p>eal_parse_sysfs_value</p>
+</div>
+<div class="section" id="id6">
+<h2>函数调用<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>rte_eal_cpu_init</p>
+<blockquote>
+<div><p>cpu_detected</p>
+<p>cpu_core_id</p>
+<p>eal_cpu_socket_id</p>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2>主要接口描述<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p class="first">cpu_detected(lcore_id)</p>
+<blockquote>
+<div><p>检测对应lcore_id是否存在</p>
+<p>读取/sys/devices/system/cpu/cpu%u/topology/core_id是否存在</p>
+</div></blockquote>
+</li>
+<li><p class="first">cpu_core_id(lcore_id)</p>
+<blockquote>
+<div><p>获取lcore_id对应core_id,既通过逻辑核心id获取物理核心id</p>
+<p>读取/sys/devices/system/cpu/cpu%u/topology/core_id得值，即物理核心id</p>
+</div></blockquote>
+</li>
+<li><p class="first">eal_cpu_socket_id</p>
+<blockquote>
+<div><p>获取lcore_id对应得socket</p>
+<p>首先从/sys/devices/system/cpu/cpu%u/读取是否包含nodeX的目录，如果读取到则X即socketid</p>
+<p>若不包含，则从/sys/devices/system/cpu/cpu％u/topology/physical_package_id文件中获取,以替代socketid</p>
+<blockquote>
+<div><p>Note: physical package id != NUMA nmde, but we use it as a fallback for kernels which don&#8217;t create a nodeY link</p>
+<dl class="docutils">
+<dt>如果获取的socketid大于RTE_MAX_NUMA_NODES，则根据RTE_EAL_ALLOW_INV_SOCKET_ID宏定义来觉得。当设置RTE_EAL_ALLOW_INV_SOCKET_ID时</dt>
+<dd><p class="first last">会lcore_config[lcore_id].socket_id = 0;否则退出程序，打印堆栈。</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="eal-parse-args">
+<h1>eal_parse_args<a class="headerlink" href="#eal-parse-args" title="永久链接至标题">¶</a></h1>
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>EAL common options:</dt>
+<dd><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-c <var>COREMASK</var></span></kbd></td>
+<td>Hexadecimal bitmask of cores to run on</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l <var>CORELIST</var></span></kbd></td>
+<td>List of cores to run on
+The argument format is &lt;c1&gt;[-c2][,c3[-c4],...]
+where c1, c2, etc are core indexes between 0 and 128</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--lcores <var>COREMAP</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">Map lcore set to physical cpu set
+The argument format is</p>
+<blockquote>
+<div>&#8216;&lt;lcores[&#64;cpus]&gt;[&lt;,lcores[&#64;cpus]&gt;...]&#8217;</div></blockquote>
+<p class="last">lcores and cpus list are grouped by &#8216;(&#8216; and &#8216;)&#8217;
+Within the group, &#8216;-&#8216; is used for range separator,
+&#8216;,&#8217; is used for single number separator.
+&#8216;( )&#8217; can be omitted for single element group,
+&#8216;&#64;&#8217; can be omitted if cpus and lcores have the same value</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--master-lcore <var>ID</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Core ID that is used as master</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n <var>CHANNELS</var></span></kbd></td>
+<td>Number of memory channels</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m <var>MB</var></span></kbd></td>
+<td>Memory to allocate (see also &#8211;socket-mem)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r <var>RANKS</var></span></kbd></td>
+<td>Force number of memory ranks (don&#8217;t detect)</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-b, &#8211;pci-blacklist Add a PCI device in black list.</dt>
+<dd>Prevent EAL from using this PCI device. The argument
+format is &lt;domain:bus:devid.func&gt;.</dd>
+<dt>-w, &#8211;pci-whitelist Add a PCI device in white list.</dt>
+<dd>Only use the specified PCI devices. The argument format
+is &lt;[domain:]bus:devid.func&gt;. This option can be present
+several times (once per device).
+[NOTE: PCI whitelist cannot be used with -b option]</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--vdev</span></kbd></td>
+<td>Add a virtual device.
+The argument format is &lt;driver&gt;&lt;id&gt;[,key=val,...]
+(ex: &#8211;vdev=eth_pcap0,iface=eth2).</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-d LIB.so|DIR       Add a driver or driver directory</dt>
+<dd>(can be used multiple times)</dd>
+</dl>
+<table class="last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--vmware-tsc-map</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Use VMware TSC map instead of native RDTSC</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--proc-type</span></kbd></td>
+<td>Type of this process (primary|secondary|auto)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--syslog</span></kbd></td>
+<td>Set syslog facility</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--log-level</span></kbd></td>
+<td>Set default log level</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>Display version information on startup</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></td>
+<td><p class="first">This help</p>
+<p class="last">EAL options for DEBUG use only:</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--huge-unlink</span></kbd></td>
+<td>Unlink hugepage files after init</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-huge</span></kbd></td>
+<td>Use malloc instead of hugetlbfs</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-pci</span></kbd></td>
+<td>Disable PCI</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-hpet</span></kbd></td>
+<td>Disable HPET</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-shconf</span></kbd></td>
+<td><p class="first">No shared config (mmap&#8217;d files)</p>
+<p class="last">EAL Linux options:</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--socket-mem</span></kbd></td>
+<td>Memory to allocate on sockets (comma separated values)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--huge-dir</span></kbd></td>
+<td>Directory where hugetlbfs is mounted</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--file-prefix</span></kbd></td>
+<td>Prefix for hugepage filenames</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--base-virtaddr</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Base virtual address</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--create-uio-dev</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Create /dev/uioX (usually done by hotplug)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--vfio-intr</span></kbd></td>
+<td>Interrupt mode for VFIO (legacy|msi|msix)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--xen-dom0</span></kbd></td>
+<td>Support running on Xen dom0 without hugetlbfs</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div></blockquote>
+<div class="section" id="id8">
+<h2>相关的外部接口和变量<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>函数调用<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>eal_reset_internal_config(&amp;internal_config);//初始化默认参数</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>主要接口描述<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>eal_parse_coremask:解析-c 参数，并会修改rte_config及lcore_config中lcore对应的计数、flag等</li>
+<li>eal_parse_corelist:解析-l 与-c效果相同;可以同时添加-c -l,但是会取后面的那个选项的配置。</li>
+<li>eal_parse_lcores :解析&#8211;lcore,重新设置lcore绑定的cpu.</li>
+</ul>
+<blockquote>
+<div></div></blockquote>
+<ul>
+<li><p class="first">rte_eal_devargs_add:解析-b -c &#8211;dev ,将调用该函数。</p>
+<blockquote>
+<div><blockquote>
+<div><p>&#8211;dev:添加虚拟驱动</p>
+<p class="attribution">&mdash;w:  将只会加载-w指定的网卡，只通过setup.sh脚步配置的网卡时不会加载的。 通过查看变量rte_eth_devices得出的结论。</p>
+</div></blockquote>
+<blockquote>
+<div><p>&#8211;b: 指定网卡加入黑名单，即被指定网卡不会被加载。</p>
+</div></blockquote>
+<p>该函数逻辑：创建rte_devargs-&gt; 解析参数-&gt;将创建的rte_devargs挂在devargs_list链表上。</p>
+<p>rte_devargs结构体储存网卡设备类型（黑名单，白名单，虚拟驱动）-&gt;设备对应的设备的pci编号或驱动类类型（虚拟驱动有eth_pcap,if之类）</p>
+</div></blockquote>
+</li>
+<li><p class="first">eal_parse_proc_type</p>
+<blockquote>
+<div><p>默认程序时RTE_PROC_PRIMARY</p>
+</div></blockquote>
+</li>
+<li><p class="first">其他</p>
+<blockquote>
+<div><p>其他参数大多存在来internal_config全局变量中</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="eal-hugepage-info-init">
+<h1>eal_hugepage_info_init<a class="headerlink" href="#eal-hugepage-info-init" title="永久链接至标题">¶</a></h1>
+<p>只有在未设置no_hugetlbfs并且未设置xen的支持且为主进程时，才会调用该函数。</p>
+<p>填充internal_config.hugepage_info［］信息，该数组最大为4</p>
+<p>函数执行流程:</p>
+<ul class="simple">
+<li>遍历/sys/kernel/mm/hugepages目录下所有以hugepages-开头的文件，但只能取前3个。</li>
+<li>获取该大页的大小，如hugepages-2048kB则大页大小为2MB</li>
+<li>获取大页路径,并使用flock设置写锁</li>
+<li>晴空大页路径下的*map_*的文件，如果没有被其他dpdk进程运行</li>
+<li>获取大页个数</li>
+</ul>
+<div class="section" id="id11">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2>函数调用<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>rte_str_to_size 获取大页大小</p>
+<p>get_hugepage_dir 获取大页的路径</p>
+<p>clear_hugedir 清空大页相关文件如果没有被其他dpdk进程运行</p>
+<p>get_num_hugepages 获取大页个数</p>
+</div>
+<div class="section" id="id13">
+<h2>主要接口描述<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>get_hugepage_dir:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span></span>先调用get_default_hp_size获取默认页面大小
+读取 /proc/mounts |grep hugetlbfs ，如果在选项字段包含pagesize=字段，则获取该值为pagesize,并与入参比较，确定大页目录
+ 如果选项字段不包含pageseze=字段，则以默认页面大小与入参比较，确定大页目录。
+ 所以返回的目录会又随机型，大部分系统是这样返回的
+ [root@vmware hugepages]# cat /proc/mounts |grep hugetlbfs
+ hugetlbfs /dev/hugepages hugetlbfs rw,relatime 0 0
+ nodev /mnt/huge hugetlbfs rw,relatime 0 0
+ 那么对此种配置，则会选取靠前面的挂载点作为大页默认目录
+ 另外，如果使用--huge-dir显示的设置internal_config.hugepage_dir,则会以此目录作为大页路径
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">get_default_hp_size:获取大页默认大小，从cat /proc/meminfo | grep Hugepagesize中读取。</p>
+</li>
+<li><p class="first">get_num_hugepages: 获取大页个数，从/sys/kernel/mm/hugepages/hugepages-xxx/中获取，free_hugepages－resv_hugepages即为所求值</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rte-config-init">
+<h1>rte_config_init<a class="headerlink" href="#rte-config-init" title="永久链接至标题">¶</a></h1>
+<p>初始化rte_config.mem_config，并保证主从进程的虚拟地址相同</p>
+<ul>
+<li><p class="first">如果是主进程，则调用rte_eal_config_create，默认创建/var/run/.rte_config文件，调用mmap获取sizeof(struct rte_mem_config)大小的虚拟内存。并</p>
+<blockquote>
+<div><p>将共享内存的基址存到共享内存中，供子进程使用，从而保证主次进程映射的基址相同。</p>
+</div></blockquote>
+<p>参见rte_eal_config.h 中的struct rte_mem_config结构体</p>
+</li>
+<li><p class="first">如果是从进程则会先获取先调用mmap,获取主进程设置的rte_config.mem_cfg_addr(主进程映射的地址空间)，</p>
+<p>从新调用mmap(使用祝进程的虚拟地址)，从而保证主从进程虚拟地址相同。</p>
+<p>注意:从进程将一直等待主进程(rte_eal_mcfg_complete完成mem配置)，才会从新调用rte_eal_config_reattach()</p>
+</li>
+</ul>
+<div class="section" id="id14">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>rte_config</p>
+</div>
+<div class="section" id="id15">
+<h2>函数调用<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id16">
+<h2>主要接口描述<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p class="first">rte_eal_config_create(主进程调用) 首先调用eal_runtime_config_path 获取rte_config的文件路径</p>
+<p>如果设置&#8211;no-shconf 则直接return</p>
+<p>调用ftruncate fcnt设置.rte_config文件大小，锁定文件等。</p>
+<p>调用mmap获取rte_mem_config大小的内存，并将共享内存地址存到共享内存rte_config.mem_cfg_addr中</p>
+</li>
+<li><p class="first">eal_runtime_config_path: 如果是root用户则会返回默认的/var/run/.rte_config(注意.rte_config 可以根据&#8211;file-prefix进行修改)</p>
+</li>
+<li><p class="first">rte_eal_config_attach(从进程调用) 首先调用eal_runtime_config_path 获取rte_config的文件路径</p>
+<p>如果设置&#8211;no-shconf 则直接return</p>
+<p>调用mmap获取内存内存基址,并将该地址存到rte_config.mem_config中。</p>
+</li>
+</ul>
+<p>rte_eal_mcfg_wait_complete:等待主进程rte_eal_mcfg_complete完成内存配置</p>
+<ul>
+<li><p class="first">rte_eal_config_reattach(从进程调用)</p>
+<p>读取rte_config.mem_cfg_addr(主进程存的虚拟地址)。并使用该地址从新调用mmap，从而保证进程间虚拟地址相同。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rte-eal-pci-init-todo">
+<h1>rte_eal_pci_init(todo)<a class="headerlink" href="#rte-eal-pci-init-todo" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id17">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h2>
+<p>pci_driver_list 驱动列表
+pci_device_list 设备列表
+nb_ports &nbsp; 端口总个数
+rte_eth_devices 端口对应数组指针</p>
+</div>
+<div class="section" id="id18">
+<h2>函数调用<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<p>rte_eth_dev_init 初始化端口数组
+rte_eth_driver_register 注册端口初始化销毁的函数回调</p>
+</div>
+<div class="section" id="id19">
+<h2>主要接口描述<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rte-eal-memory-init">
+<h1>rte_eal_memory_init<a class="headerlink" href="#rte-eal-memory-init" title="永久链接至标题">¶</a></h1>
+<p>主进程调用rte_eal_hugepage_init，子进程调用rte_eal_hugepage_attach</p>
+<div class="section" id="id20">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id21">
+<h2>函数调用<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id22">
+<h2>主要接口描述<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rte-eal-hugepage-init">
+<h1>rte_eal_hugepage_init<a class="headerlink" href="#rte-eal-hugepage-init" title="永久链接至标题">¶</a></h1>
+<p>lib/librte_eal/linuxapp/eal/eal_memory.c</p>
+<ul>
+<li><p class="first">map N huge pages in separate files in hugetlbfs</p>
+</li>
+<li><p class="first">find associated physical addr</p>
+</li>
+<li><p class="first">find associated NUMA socket ID</p>
+</li>
+<li><p class="first">sort all huge pages by physical address</p>
+</li>
+<li><p class="first">remap these N huge pages in the correct order</p>
+</li>
+<li><p class="first">unmap the first mapping</p>
+</li>
+<li><dl class="first docutils">
+<dt>fill memsegs in configuration with contiguous zones</dt>
+<dd><p class="first">这个时候可以正确设置num_pages了internal_config.hugepage_info[j].num_pages[socket]++;</p>
+<p>将大页内存信息存入/var/run/.rte_hugepage_info的共享内存</p>
+<p>若干个页根据是否连续，是否同一个socket，是否相同页尺寸等，</p>
+<p class="last">分成最多RTE_MAX_MEMSEG(默认256)个内存段(memory segment)：</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">new_memseg</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">RTE_MAX_MEMSEG</span><span class="p">)</span>
+<span class="k">break</span><span class="p">;</span>
+
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">phys_addr</span> <span class="o">=</span> <span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">physaddr</span><span class="p">;</span>
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">addr</span> <span class="o">=</span> <span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">final_va</span><span class="p">;</span>
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">len</span> <span class="o">=</span> <span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">;</span>
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">socket_id</span> <span class="o">=</span> <span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">socket_id</span><span class="p">;</span>
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">hugepage_sz</span> <span class="o">=</span> <span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// continuation of previous memseg</span>
+<span class="k">else</span>
+<span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">len</span> <span class="o">+=</span> <span class="n">mcfg</span><span class="o">-&gt;</span><span class="n">memseg</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">hugepage_sz</span><span class="p">;</span>
+
+<span class="n">hugepage</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">memseg_id</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id23">
+<h2>相关的外部接口及变量<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id24">
+<h2>函数调用<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id25">
+<h2>主要接口描述<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>map_all_hugepages(struct hugepage_file <a href="#id26"><span class="problematic" id="id27">*</span></a>hugepg_tbl,struct hugepage_info <a href="#id28"><span class="problematic" id="id29">*</span></a>hpi, int orig)</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>循环hpi-&gt;num_pages[0]遍历，比如设置512个内存大页面，则会创建512个rtemap_xxx 个文件。
+eal_get_hugefile_path将返回rte_mapxxx文件名称，放到hugepg_tbl[i].filepath中
+调用open mmap分配hugepage_sz大小的内存virtadd。
+vma_addr有讲究(其实这段是为第二次重新分配内存设计的逻辑)：
+当设置RTE_EAL_SINGLE_FILE_SEGMENTS时，将调用get_virtual_area获取虚拟地址。
+当为设置时的逻辑是：rtemap_0是通过mmap获取的，而 rtemap_1---rtemap_n是根据virtaddr逐步加hugepage_sz，
+然后作为参数传给mmap,但是当该虚拟地址被使用则会重新分配一个地址。不知道dpdk的用意？？。
+如果orig==1,则hugepg_tbl[i].orig_va = virtadd，否则hugepg_tbl[i].final_va = virtaddr;
+调用flock锁定rtemap_xxx文件
+vma_addr = (char *)vma_addr + hugepage_sz;
+</pre></div>
+</div>
+</div></blockquote>
+<p>第二次重新mmap的逻辑如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>首先从当前i处开始找物理连续的内存页个数n，然后调用get_virtual_area获取足够的虚拟地址。get_virtual_area将会尽最大努力获取到
+[1,n)个大小的虚拟地址空间，然后把vma_len付为获取到的最大虚拟内存块。
+另一个代码逻辑（我感觉这个逻辑没用）：如果该虚拟地址不够则会将vma_len设置成
+hugepage_sz, 然后会在努力从i+1处，继续找到n-1个连续内存块，然后继续调用get_virtual_area获取足够的虚拟内存块。
+vma_len设计也是有作者的自己的思想的，vma_len是由物理连续块个数及虚拟地址区域决定的，当无法获取足够大的虚拟内存区域时，直接将
+vma_len设置成一块，在vma_addr = (char *)vma_addr + hugepage_sz;vma_len -= hugepage_sz;执行的时候不会出错。同时下面的核心代码，也只有
+vma_len被减成0时，才需要在重新调用get_virtual_area获取最大虚拟内存块的。
+核心代码
+</pre></div>
+</div>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">hpi</span><span class="o">-&gt;</span><span class="n">num_pages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#ifdef RTE_ARCH_PPC_64</span>
+<span class="cm">/* The physical addresses are sorted in</span>
+<span class="cm">* descending order on PPC64 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">hugepg_tbl</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">physaddr</span> <span class="o">!=</span>
+  <span class="n">hugepg_tbl</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">physaddr</span> <span class="o">-</span> <span class="n">hugepage_sz</span><span class="p">)</span>
+  <span class="k">break</span><span class="p">;</span>
+  <span class="cp">#else</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">hugepg_tbl</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">physaddr</span> <span class="o">!=</span>
+  <span class="n">hugepg_tbl</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">physaddr</span> <span class="o">+</span> <span class="n">hugepage_sz</span><span class="p">)</span>
+  <span class="k">break</span><span class="p">;</span>
+  <span class="cp">#endif</span>
+  <span class="p">}</span>
+  <span class="n">num_pages</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span>
+  <span class="n">vma_len</span> <span class="o">=</span> <span class="n">num_pages</span> <span class="o">*</span> <span class="n">hugepage_sz</span><span class="p">;</span>
+
+<span class="cm">/* get the biggest virtual memory area up to</span>
+<span class="cm">* vma_len. If it fails, vma_addr is NULL, so</span>
+<span class="cm">  * let the kernel provide the address. */</span>
+    <span class="n">vma_addr</span> <span class="o">=</span> <span class="n">get_virtual_area</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vma_len</span><span class="p">,</span> <span class="n">hpi</span><span class="o">-&gt;</span><span class="n">hugepage_sz</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vma_addr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="n">vma_len</span> <span class="o">=</span> <span class="n">hugepage_sz</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>find_physaddrs 获取所有共享内存的物理地址，其实都是调用rte_mem_virt2phy实现的。</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span>rte_mem_virt2phy 根据虚拟地址转换成物理地址。从/proc/self/pagemap读取相关page信息.总体思想是获取page,根据page加上页内偏移算出物理地址。
+
+具体参考：https://shanetully.com/2014/12/translating-virtual-addresses-to-physcial-addresses-in-user-space/
+</pre></div>
+</div>
+<ul class="simple">
+<li>find_numasocket 获取虚拟内存对应的socketid；</li>
+</ul>
+<p>从/proc/self/numa_maps读取出现huge或者internal_config.hugefile_prefix字符的行,类似</p>
+<blockquote>
+<div>“01e00000 prefer:0 file=/dev/hugepages/rtemap_15 huge dirty=1 N0=1&#8221; 其中01e00000是虚拟地址，NO表示：N代表numa,0代表是socketid等于0</div></blockquote>
+<ul>
+<li><p class="first">sort_by_physaddr 根据物理内存排序</p>
+</li>
+<li><p class="first">get_virtual_area(size_t <a href="#id30"><span class="problematic" id="id31">*</span></a>size, size_t hugepage_sz) 获取虚拟地址空间.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>有4点：1. 使用mmap分配size+hugepage_sz大小空间 2.如果分配不出来减去hugepage_sz
+在分配，直至分配出来为止。并修改size值，把他传给调用者。3,munmap掉刚分配出的内存。4.按照hugepage_sz大小对其，并返回对其后的地址（在调用mmap时故意多加来一个页面大小）
+下面初始化就是该函数打印的，总共分512个大页，共5段连续内存块。
+EAL: Ask a virtual area of 0x200000 bytes
+EAL: Virtual area found at 0x7ffff6c00000 (size = 0x200000)
+EAL: Ask a virtual area of 0x3f800000 bytes
+EAL: Virtual area found at 0x7fffb7200000 (size = 0x3f800000)
+EAL: Ask a virtual area of 0x200000 bytes
+EAL: Virtual area found at 0x7fffb6e00000 (size = 0x200000)
+EAL: Ask a virtual area of 0x200000 bytes
+EAL: Virtual area found at 0x7fffb6a00000 (size = 0x200000)
+EAL: Ask a virtual area of 0x200000 bytes
+EAL: Virtual area found at 0x7fffb6600000 (size = 0x200000)
+EAL: Requesting 512 pages of size 2MB from socket 0
+</pre></div>
+</div>
+</li>
+<li><p class="first">unmap_all_hugepages_orig 调用munmap将第一次mmap的大页(hugepg_tbl[i].orig_va)释放掉。</p>
+</li>
+<li><p class="first">calc_num_pages_per_socket 计算每个socket的页面数，应该与&#8211;socket-mem有关。（我感觉会根据某种策略来选择保留的大页面。todo）</p>
+</li>
+<li><p class="first">unmap_unneeded_hugepages 释放不用的大页面内存。感觉这个函数与calc_num_pages_per_socket有很大关系。
+}</p>
+</li>
+<li><p class="first">unlink_hugepage_files 如果设置来－－huge-unlink，则会调用该函数，Unlink hugepage files after init。</p>
+</li>
+<li><p class="first">create_shared_memory copy_hugepages_to_shared_mem: 使用/var/run/.rte_hugepage_info 调用nmap创建共享内存，将大页信息纪录到共享内存中。</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="zp/index.html" class="btn btn-neutral float-right" title="DPDK Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="dpdk相关" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016-2017, promise.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.3',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

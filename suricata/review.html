@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>源码笔记 &mdash; 陈令祥文档系统 1.5.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="陈令祥文档系统 1.5.3 文档" href="../index.html"/>
+        <link rel="up" title="suricata" href="index.html"/>
+        <link rel="prev" title="suricata4.0.1源码分析" href="review_4.0.1.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 陈令祥文档系统
+          
+
+          
+            
+            <img src="../_static/haohan_logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide/index.html">文档编写指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/howto.html">1. 如何用sphinx+reST编写文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id1">1.1. 前言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id2">1.2. 安装软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id3">1.3. 项目建立</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#conf-py">1.4. conf.py配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id4">1.4.1. 主题样式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#logo">1.4.2. LOGO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id5">1.4.3. 不显示源文件链接</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#index">1.5. index页配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id6">1.6. 修改默认样式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step1">1.6.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step2">1.6.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step3">1.6.3. Step3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#api">1.7. 生成API文档</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id7">1.7.1. Step1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id8">1.7.2. Step2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id9">1.7.3. Step3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#step4">1.7.4. Step4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#pdf">1.8. 生成PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#rest">1.9. reST语法介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id10">1.9.1. 章节标题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id11">1.9.2. 段落</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id12">1.9.3. 行内标记</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id13">1.9.4. 列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id14">1.9.5. 代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id15">1.9.6. 超链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id16">1.9.7. 图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id17">1.9.8. 表格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id18">1.9.9. 引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id19">1.9.10. 脚注</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id20">1.9.11. 提醒</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../doc_guide/howto.html#id21">1.9.12. 替换</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/howto.html#id22">1.10. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../doc_guide/dir_struct.html">2. 目录结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#id2">2.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc_guide/dir_struct.html#xxx">2.2. 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kbase/index.html">技术知识</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/cunit.html">CUnit测试工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id2">安装配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#id3">从源码编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id4">输出方式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#void-cu-automated-run-tests-void">void CU_automated_run_tests(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#cu-errorcode-cu-list-tests-to-file-void">CU_ErrorCode CU_list_tests_to_file(void)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/cunit.html#void-cu-set-output-filename-const-char-szfilenameroot">void CU_set_output_filename(const char* szFilenameRoot)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id5">断言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id6">错误处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/cunit.html#id7">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/gdb.html">gdb速查手册</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/gdb.html#id1">常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id2">常见汇编指令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/gdb.html#id3">调试技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id4">图形界面使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id5">内存断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#id6">启动自加载断点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/gdb.html#dmesg">通过dmesg查看段错误位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/gdb.html#c">定位到c代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/netalgo/index.html">网络算法学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/netalgo/proto_process.html">9 Protocol Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id1">9.1 缓存管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#crcchecksum">9.2 CRC和Checksum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id4">9.3 通用协议处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/proto_process.html#id5">9.4 重组</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/netalgo/sched_packet.html">14 Scheduling Packets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id1">14.1 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id2">14.2 拥塞控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id13">14.3 带宽与突发限制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id24">14.4 多队列与优先级</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id25">14.5 资源预留协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id26">14.6 带宽保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id30">14.7 时延保证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#scalable-fair-queuing">14.8 Scalable Fair Queuing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#dpdk">14.9 dpdk分层调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#diffserv">14.10 DiffServ架构介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#dpdk-qos">14.11 dpdk QoS框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id37">附录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/netalgo/sched_packet.html#id38">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/ntp.html">NTP服务器客户端配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id1">目的</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id2">读者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id3">名词</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id4">专有名词</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id5">服务器/客户端配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id6">服务器端配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ntp.html#id7">客户端配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ntp.html#id8">同步时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/ipmi.html">IPMI概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id1">1 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id2">2 名词解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id3">3 主要功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id4">4 IPMI管理工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id5">4.1 安装管理工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id6">4.2 加载IPMI内核</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id7">5 IPMI命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#ipmitool">5.1 ipmitool命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id8">5.2 常用命令模板</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/ipmi.html#id9">6、远程管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#bmc">6.1 设置BMC信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id10">6.2 配置用户</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id11">6.3 查看bmc信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/ipmi.html#id12">6.4 远程操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/redis.html">redis性能测试</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/redis.html#id1">1 测试说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id2">1.1 测试环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id3">1.2 测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kbase/redis.html#id7">1.3.    测试总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html">log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#id1">样例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id2">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id3">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id4">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-cpu-init">rte_eal_cpu_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id5">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id6">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id7">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#eal-parse-args">eal_parse_args</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id8">相关的外部接口和变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id9">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id10">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#eal-hugepage-info-init">eal_hugepage_info_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id11">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id12">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id13">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-config-init">rte_config_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id14">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id15">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id16">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-pci-init-todo">rte_eal_pci_init(todo)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id17">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id18">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id19">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-memory-init">rte_eal_memory_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id20">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id21">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id22">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/init.html#rte-eal-hugepage-init">rte_eal_hugepage_init</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id23">相关的外部接口及变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id24">函数调用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/init.html#id25">主要接口描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dpdk/zp/index.html">DPDK Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/eal.html">EAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#linuxeal">Linux环境的EAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id1">内存机制与初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#cpu">CPU信息取得与核绑定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#lcore">线程/lcore的初始化与启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id2">多进程应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id3">其他注意事项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/eal.html#id4">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/ring.html">Ring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id4">应用场景</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id5">无锁队列操作图解</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id6">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id7">多生产者入队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id8">多消费者出队</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id9">索引计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/ring.html#id10">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mem.html">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id1">内存的初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mem.html#id6">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memseg.html">Memseg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memseg.html#id3">初始化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/memzone.html">Memzone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#memzone-init">初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id3">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/memzone.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/malloc.html">Malloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id2">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap">malloc heap初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#malloc-heap-alloc">内存分配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id4">内存释放</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/malloc.html#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mempool.html">Mempool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id2">特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id4">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id5">创建</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id6">取出对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id7">还回对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mempool.html#id8">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dpdk/zp/mbuf.html">Mbuf</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id1">概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id2">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id3">数据结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id4">分配与回收</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id8">元信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#directindirect-mbuf">Direct和Indirect mbuf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dpdk/zp/mbuf.html#id9">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">suricata</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#id2">文件还原的简单实验</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html#id3">安装部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html#id4">配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html#id5">启动</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="review_4.0.1.html">suricata4.0.1源码分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="review_4.0.1.html#id1">约定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="review_4.0.1.html#id2">概述及全局观览</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="review_4.0.1.html#id3">全局变量</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="review_4.0.1.html#main">main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="review_4.0.1.html#runmoderegisterrunmodes">RunModeRegisterRunModes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="review_4.0.1.html#globalsinitpreconfig">GlobalsInitPreConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="review_4.0.1.html#postconfloadedsetup">PostConfLoadedSetup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="review_4.0.1.html#id4">开源引擎借鉴</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">源码笔记</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tcp">tcp识别总体流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow">flow模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">TCP重组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">协议识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">应用识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">协议解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">陈令祥文档系统</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">suricata</a> &raquo;</li>
+        
+      <li>源码笔记</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>源码笔记<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>调试<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>set arg -c /etc/suricata/suricata.yaml -r /root/work/pcap/txt_simple_syn2get200.pcap
+#0  TmThreadsSlotVarRun (tv=tv@entry=0x24298b0, p=p@entry=0x7fffec26bf10, slot=slot@entry=0x5d33290) at tm-threads.c:118
+#1  0x000000000053794d in TmThreadsSlotProcessPkt (p=0x7fffec26bf10, s=0x5d33290, tv=0x24298b0) at tm-threads.h:149
+#2  PcapFileCallbackLoop (user=0x7fffec26c8c0 &quot;&quot;, h=&lt;optimized out&gt;, pkt=0x7fffec26cdf0 &quot;&quot;) at source-pcap-file.c:178
+#3  0x00007ffff746bf89 in pcap_offline_read () from /lib64/libpcap.so.1
+#4  0x0000000000537e06 in ReceivePcapFileLoop (tv=0x24298b0, data=0x7fffec26c8c0, slot=&lt;optimized out&gt;) at source-pcap-file.c:211
+#5  0x0000000000552c92 in TmThreadsSlotPktAcqLoop (td=0x24298b0) at tm-threads.c:334
+#6  0x00007ffff5d91df3 in start_thread () from /lib64/libpthread.so.0
+#7  0x00007ffff58bb3dd in clone () from /lib64/libc.so.6
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="tcp">
+<h2>tcp识别总体流程<a class="headerlink" href="#tcp" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>FlowWorker-&gt;</dt>
+<dd><dl class="first last docutils">
+<dt>StreamTcp</dt>
+<dd><dl class="first last docutils">
+<dt>-&gt;AppLayerHandleTCPData</dt>
+<dd>-&gt;  TCPProtoDetect
+-&gt;  AppLayerParserParse</dd>
+</dl>
+</dd>
+<dt>Detect</dt>
+<dd><dl class="first last docutils">
+<dt>-&gt; SigMatchSignatures</dt>
+<dd>-&gt; PrefilterTx</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>先经过StreamTcp进行流重组、协议识别、报文结构解析</dt>
+<dd><ul class="first last">
+<li><p class="first">首先进行重组</p>
+</li>
+<li><dl class="first docutils">
+<dt>重组完成后,调用AppLayerHandleTCPData进行应用层处理</dt>
+<dd><ul class="first last simple">
+<li>调用TCPProtoDetect进行协议识别</li>
+<li>调用AppLayerParserParse进行协议解析(比如http解析锚点、html头部等)，协议解析见下文描述。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Detect进行业务识别(SigMatchSignatures)</dt>
+<dd><ul class="first last simple">
+<li>经过上一步骤已经完成了应用层的解码。</li>
+<li>后续可以根据urihostuser-agent等进行协议识别</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="flow">
+<h2>flow模块<a class="headerlink" href="#flow" title="永久链接至标题">¶</a></h2>
+<p>流表采用加锁的方式，有专门的释放流表的线程.
+FlowWorker-&gt;DetectNoFlow-&gt;SigMatchSignatures-&gt;DeStateDetectStartDetection-&gt;DetectFileInspectHttp-&gt;DetectFileInspect-&gt;DetectFileextMatch</p>
+</div>
+<div class="section" id="id3">
+<h2>TCP重组<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>DoReassemble 是重组完成后，调用</p>
+<p>乱序的时候: StreamTcpReassembleAppLayer -&gt;DoReassemble-&gt;AppLayerHandleTCPData</p>
+<p>无乱序的时候: StreamTcpReassembleAppLayer -&gt;AppLayerHandleTCPData</p>
+<p>无论是否分段，StreamTcpReassembleAppLayer是重组的最后一个主要函数，如果有乱序重组后将调用DoReassemble。</p>
+<p>该部分也不是我最关心的的了。</p>
+</div>
+<div class="section" id="id4">
+<h2>协议识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>alpd_ctx是协议识别的全局变量，存放了各种协议识别使用的数据：如字符串，状态机等</p>
+<p>协议识别&#8211;识别过程
+AppLayerProtoDetectGetProto -&gt; AppLayerProtoDetectPMGetProto:通过特征串匹配  ，这个就是一个匹配，代码也不多</p>
+<blockquote>
+<div>-&gt; AppLayerProtoDetectPPGetProto:通过探测方式识别，主动发送报文探测结果</div></blockquote>
+<p>AppLayerParserParse；这个没有在分析</p>
+<p>协议识别&#8211;初始化过程(特征串方式):
+AppLayerSetup -&gt; AppLayerProtoDetectSetup:初始化单模多模算法等</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="docutils">
+<dt>AppLayerParserRegisterProtocolParsers:各协议添加字符串,会调用个协议的RegisterxxxxxParsers.</dt>
+<dd>他们最终都会调用AppLayerProtoDetectPMRegisterPatternCS 和
+AppLayerProtoDetectPMRegisterPatternCI注册字符串,而这两个函数最终都会掉AppLayerProtoDetectPMAddSignature。
+比如:RegisterHTPParsers-&gt;HTPRegisterPatternsForProtocolDetection -&gt;AppLayerProtoDetectPMRegisterPatternCI</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>AppLayerProtoDetectPrepareState：添加特征到状态机并编译</dt>
+<dd>-&gt;AppLayerProtoDetectPMMapSignatures :添加到状态机
+-&gt;AppLayerProtoDetectPMPrepareMpm :编译</dd>
+</dl>
+</div></blockquote>
+<p>协议识别&#8211;初始化过程(探测方式):</p>
+<p>通过如下调用，将注册探测函数。如RegisterDNSUDPParsers中注册了DNSUdpProbingParser探测函数
+AppLayerProtoDetectPPParseConfPorts-&gt;AppLayerProtoDetectPPRegister
+AppLayerProtoDetectPPRegister-&gt;AppLayerProtoDetectInsertNewProbingParser-&gt;AppLayerProtoDetectProbingParserElementDuplicate</p>
+</div>
+<div class="section" id="id5">
+<h2>应用识别<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>感觉基本很像snort。发现这个与我看suricata的目的，没有任何关系了,果断停止。</dt>
+<dd>以uri的检测方式，简单说明下吧。
+DetectHttpUriRegister注册uri的识别方法。最终进行识别的是PrefilterTxUri和DetectEngineInspectHttpUri进行的。</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>Detect进行业务识别(SigMatchSignatures)</dt>
+<dd><ul class="first simple">
+<li>先调用SigMatchSignatures</li>
+<li>在依次调用Prefilter和PrefilterTx</li>
+</ul>
+<blockquote>
+<div><p>在PrefilterTx 中调用AppLayerParserGetTx（StateGetTx） 获取到识别需要用到的相关字段值，在调用PrefilterTx进行相应方法的识别。
+这里是个重点, 对协议解析部分分析的时候会对StateGetTx详细阐述。</p>
+</div></blockquote>
+<ul class="last simple">
+<li>在调用PrefilterTxUri和DetectEngineInspectHttpUri
+通过streamTcp之后，就会把http的头部信息解析完了，会将uri传到这个PrefilterTxUri函数中。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>协议解析<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>最终到应用层都会调用AppLayerHandleTCPData，AppLayerHandleTCPData函数是重组有序之后第一个被调用的函数，这里将都是有序报文。</p>
+<p>对于http的文件还原，使用了libhtp这个库。目前看是先经过tcpstream进行流重组，然后送给libhtp进行解析，最后在回调到http模块生成文件。
+最终涉及的两个函数HTPFileOpen(创建文件)和HTPFileStoreChunk(追加到文件中)。</p>
+<blockquote>
+<div><p>HTPFileOpen调用过程</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>#0  HTPFileOpen (s=s@entry=0x7fffe4099ac0, filename=0x7fffe409a8c8 &quot;/web/a.txt&quot;, filename_len=10,
+data=data@entry=0x7ffff227140b &quot;sdfasdfasdfasdf\nasdfasdf\nasdfasdf\nasdf\nasd\nf\nasd\nfa\ndsf\nas\ndf\niiiasd\n@\216B\002&quot;,
+data_len=data_len@entry=69, txid=0, direction=direction@entry=8 &#39;\b&#39;) at app-layer-htp-file.c:81
+#1  0x000000000044cd38 in HtpResponseBodyHandle (hstate=hstate@entry=0x7fffe4099ac0, htud=htud@entry=0x7fffe409a910, tx=0x7fffe4099e60,
+data=0x7ffff227140b &quot;sdfasdfasdfasdf\nasdfasdf\nasdfasdf\nasdf\nasd\nf\nasd\nfa\ndsf\nas\ndf\niiiasd\n@\216B\002&quot;, data_len=69)
+at app-layer-htp.c:1653
+#2  0x000000000044cede in HTPCallbackResponseBodyData (d=0x7ffff2271070) at app-layer-htp.c:1866
+#3  0x00007ffff76930b6 in htp_hook_run_all (hook=0x86b210, user_data=0x7ffff2271070) at htp_hooks.c:127
+#4  0x00007ffff76a4d06 in htp_res_run_hook_body_data (connp=0x7fffe4099b20, d=0x7ffff2271070) at htp_util.c:2430
+#5  0x00007ffff769e6f2 in htp_tx_res_process_body_data_ex (tx=0x7fffe4099e60, data=0x7ffff227140b, len=69) at htp_transaction.c:836
+#6  0x00007ffff769a1ad in htp_connp_RES_BODY_IDENTITY_CL_KNOWN (connp=0x7fffe4099b20) at htp_response.c:462
+#7  0x00007ffff769b893 in htp_connp_res_data (connp=0x7fffe4099b20, timestamp=0x7ffff2271110, data=0x7ffff2271298, len=440) at htp_response.c:1084
+#8  0x000000000044b906 in HTPHandleResponseData (f=&lt;optimized out&gt;, htp_state=0x7fffe4099ac0, pstate=0x7fffe4099a90, input=&lt;optimized out&gt;,
+input_len=&lt;optimized out&gt;, local_data=&lt;optimized out&gt;) at app-layer-htp.c:827
+#9  0x0000000000453156 in AppLayerParserParse (tv=tv@entry=0x2428e20, alp_tctx=&lt;optimized out&gt;, f=f@entry=0x14bb5b0, alproto=1,
+flags=flags@entry=11 &#39;\v&#39;,
+input=input@entry=0x7ffff2271298 &quot;HTTP/1.1 200 OK\r\nDate: Wed, 22 Feb 2017 06:01:32 GMT\r\nServer: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 mod_wsgi/3.4 Python/2.7.5\r\nLast-Modified: Wed, 22 Feb 2017 05:57:07 G&quot;..., input_len=input_len@entry=440)
+at app-layer-parser.c:998
+#10 0x0000000000414649 in TCPProtoDetect (flags=11 &#39;\v&#39;, data_len=440,
+data=0x7ffff2271298 &quot;HTTP/1.1 200 OK\r\nDate: Wed, 22 Feb 2017 06:01:32 GMT\r\nServer: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 mod_wsgi/3.4 Python/2.7.5\r\nLast-Modified: Wed, 22 Feb 2017 05:57:07 G&quot;..., stream=0x7ffff2271298, ssn=0x7fffe407a190, f=0x14bb5b0,
+p=&lt;optimized out&gt;, app_tctx=&lt;optimized out&gt;, ra_ctx=0x7fffe4001720, tv=&lt;optimized out&gt;) at app-layer.c:446
+#11 AppLayerHandleTCPData (tv=tv@entry=0x2428e20, ra_ctx=ra_ctx@entry=0x7fffe4001720, p=p@entry=0x95ffd40, f=0x14bb5b0,
+ssn=ssn@entry=0x7fffe407a190, stream=stream@entry=0x7fffe407a1a0,
+data=data@entry=0x7ffff2271298 &quot;HTTP/1.1 200 OK\r\nDate: Wed, 22 Feb 2017 06:01:32 GMT\r\nServer: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 mod_wsgi/3.4 Python/2.7.5\r\nLast-Modified: Wed, 22 Feb 2017 05:57:07 G&quot;..., data_len=440, flags=11 &#39;\v&#39;)
+at app-layer.c:590
+#12 0x000000000054581b in StreamTcpReassembleAppLayer (tv=tv@entry=0x2428e20, ra_ctx=ra_ctx@entry=0x7fffe4001720, ssn=ssn@entry=0x7fffe407a190,
+stream=stream@entry=0x7fffe407a1a0, p=p@entry=0x95ffd40) at stream-tcp-reassemble.c:3068
+#13 0x0000000000546161 in StreamTcpReassembleHandleSegmentUpdateACK (tv=tv@entry=0x2428e20, ra_ctx=ra_ctx@entry=0x7fffe4001720,
+ssn=ssn@entry=0x7fffe407a190, stream=stream@entry=0x7fffe407a1a0, p=p@entry=0x95ffd40) at stream-tcp-reassemble.c:3419
+#14 0x0000000000547b10 in StreamTcpReassembleHandleSegment (tv=tv@entry=0x2428e20, ra_ctx=0x7fffe4001720, ssn=ssn@entry=0x7fffe407a190,
+stream=0x7fffe407a1e8, p=p@entry=0x95ffd40, pq=pq@entry=0x7fffe40008e0) at stream-tcp-reassemble.c:3447
+#15 0x000000000054082c in StreamTcpPacket (tv=0x2428e20, p=0x95ffd40, stt=0x7fffe4001440, pq=0x7fffe40008e0) at stream-tcp.c:4515
+#16 0x00000000005426ea in StreamTcp (tv=0x7fffe4099ac0, tv@entry=0x2428e20, p=0x7fffe409a8c8, p@entry=0x95ffd40, data=0xa, pq=0x7ffff227140b,
+pq@entry=0x7fffe40008e0, postpq=0x45, postpq@entry=0x0) at stream-tcp.c:4918
+#17 0x00000000004fa309 in FlowWorker (tv=0x2428e20, p=0x95ffd40, data=0x7fffe40008c0, preq=0x2428f70, unused=&lt;optimized out&gt;) at flow-worker.c:194
+#18 0x0000000000550824 in TmThreadsSlotVarRun (tv=tv@entry=0x2428e20, p=p@entry=0x95ffd40, slot=slot@entry=0x2428f30) at tm-threads.c:128
+#19 0x0000000000553275 in TmThreadsSlotVar (td=0x2428e20) at tm-threads.c:585
+#20 0x00007ffff5d89df3 in start_thread () from /lib64/libpthread.so.0
+#21 0x00007ffff58b33dd in clone () from /lib64/libc.so.6
+</pre></div>
+</div>
+<p>HTPFileStoreChunk调用过程</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>#0  HTPFileStoreChunk (s=0x7fffe4099ac0,
+data=data@entry=0x1affa00 &quot;\355\320(\a\035\236err\244\251\226[S5\374\255\221*\325j\220\273_&#39;r\347\365\060mf\221\266\377\247\366ArL\256b\345\366c\264\033\002\\\004\200.\212%\267C\214\262ʯ\261\030\322dm\216\035.\347\336_\267\355\030\304\357\227\353\376\212\223\340&amp;\356\363\\\234\023J[Iu\234\003\203&quot;, data_len=data_len@entry=1412, direction=direction@entry=8 &#39;\b&#39;) at app-layer-htp-file.c:194
+#1  0x000000000044cd7f in HtpResponseBodyHandle (hstate=hstate@entry=0x7fffe4099ac0, htud=htud@entry=0x7fffe40a5ee0, tx=&lt;optimized out&gt;,
+data=0x1affa00 &quot;\355\320(\a\035\236err\244\251\226[S5\374\255\221*\325j\220\273_&#39;r\347\365\060mf\221\266\377\247\366ArL\256b\345\366c\264\033\002\\\004\200.\212%\267C\214\262ʯ\261\030\322dm\216\035.\347\336_\267\355\030\304\357\227\353\376\212\223\340&amp;\356\363\\\234\023J[Iu\234\003\203&quot;, data_len=1412) at app-layer-htp.c:1672
+#2  0x000000000044cede in HTPCallbackResponseBodyData (d=0x7ffff22710b0) at app-layer-htp.c:1866
+#3  0x00007ffff76930b6 in htp_hook_run_all (hook=0x86b200, user_data=0x7ffff22710b0) at htp_hooks.c:127
+#4  0x00007ffff76a4d06 in htp_res_run_hook_body_data (connp=0x7fffe4099b20, d=0x7ffff22710b0) at htp_util.c:2430
+#5  0x00007ffff769e6f2 in htp_tx_res_process_body_data_ex (tx=0x7fffe40a53e0, data=0x1affa00, len=1412) at htp_transaction.c:836
+#6  0x00007ffff769a1ad in htp_connp_RES_BODY_IDENTITY_CL_KNOWN (connp=0x7fffe4099b20) at htp_response.c:462
+#7  0x00007ffff769b893 in htp_connp_res_data (connp=0x7fffe4099b20, timestamp=0x7ffff2271150, data=0x1affa00, len=1412) at htp_response.c:1084
+#8  0x000000000044b906 in HTPHandleResponseData (f=&lt;optimized out&gt;, htp_state=0x7fffe4099ac0, pstate=0x7fffe4099a90, input=&lt;optimized out&gt;,
+input_len=&lt;optimized out&gt;, local_data=&lt;optimized out&gt;) at app-layer-htp.c:827
+#9  0x0000000000453156 in AppLayerParserParse (tv=tv@entry=0x2428df0, alp_tctx=&lt;optimized out&gt;, f=0x14bb5a0, alproto=1, flags=flags@entry=8 &#39;\b&#39;,
+input=0x1affa00 &quot;\355\320(\a\035\236err\244\251\226[S5\374\255\221*\325j\220\273_&#39;r\347\365\060mf\221\266\377\247\366ArL\256b\345\366c\264\033\002\\\004\200.\212%\267C\214\262ʯ\261\030\322dm\216\035.\347\336_\267\355\030\304\357\227\353\376\212\223\340&amp;\356\363\\\234\023J[Iu\234\003\203&quot;, input_len=1412) at app-layer-parser.c:998
+#10 0x000000000041468e in AppLayerHandleTCPData (tv=tv@entry=0x2428df0, ra_ctx=ra_ctx@entry=0x7fffe4001720, p=0x1affa00, p@entry=0x7fffec24aa40,
+f=&lt;optimized out&gt;, ssn=ssn@entry=0x7fffe407a190, stream=stream@entry=0x7fffe407a1a0, data=&lt;optimized out&gt;, data_len=1412, flags=8 &#39;\b&#39;)
+at app-layer.c:610
+#11 0x000000000054595b in DoReassemble (p=0x7fffec24aa40, rd=0x7ffff2271250, seg=0x1aff9d0, stream=0x7fffe407a1a0, ssn=0x7fffe407a190,
+ra_ctx=0x7fffe4001720, tv=0x2428df0) at stream-tcp-reassemble.c:2673
+#12 StreamTcpReassembleAppLayer (tv=tv@entry=0x2428df0, ra_ctx=ra_ctx@entry=0x7fffe4001720, ssn=ssn@entry=0x7fffe407a190,
+stream=stream@entry=0x7fffe407a1a0, p=p@entry=0x7fffec24aa40) at stream-tcp-reassemble.c:3043
+#13 0x0000000000546161 in StreamTcpReassembleHandleSegmentUpdateACK (tv=tv@entry=0x2428df0, ra_ctx=ra_ctx@entry=0x7fffe4001720,
+ssn=ssn@entry=0x7fffe407a190, stream=stream@entry=0x7fffe407a1a0, p=p@entry=0x7fffec24aa40) at stream-tcp-reassemble.c:3419
+#14 0x0000000000547b10 in StreamTcpReassembleHandleSegment (tv=tv@entry=0x2428df0, ra_ctx=0x7fffe4001720, ssn=ssn@entry=0x7fffe407a190,
+stream=0x7fffe407a1e8, p=p@entry=0x7fffec24aa40, pq=pq@entry=0x7fffe4001448) at stream-tcp-reassemble.c:3447
+#15 0x000000000053dd59 in HandleEstablishedPacketToClient (stt=&lt;optimized out&gt;, pq=&lt;optimized out&gt;, p=&lt;optimized out&gt;, ssn=&lt;optimized out&gt;,
+tv=&lt;optimized out&gt;) at stream-tcp.c:2232
+#16 StreamTcpPacketStateEstablished (tv=tv@entry=0x2428df0, p=p@entry=0x7fffec24aa40, stt=stt@entry=0x7fffe4001440, ssn=ssn@entry=0x7fffe407a190,
+pq=pq@entry=0x7fffe4001448) at stream-tcp.c:2476
+#17 0x0000000000541027 in StreamTcpPacket (tv=0x2428df0, p=0x7fffec24aa40, stt=0x7fffe4001440, pq=0x7fffe40008e0) at stream-tcp.c:4555
+#18 0x00000000005426ea in StreamTcp (tv=0x7fffe4099ac0, tv@entry=0x2428df0, p=0x1affa00, p@entry=0x7fffec24aa40, data=0x584, pq=0x8,
+pq@entry=0x7fffe40008e0, postpq=0x584, postpq@entry=0x0) at stream-tcp.c:4918
+#19 0x00000000004fa309 in FlowWorker (tv=0x2428df0, p=0x7fffec24aa40, data=0x7fffe40008c0, preq=0x2428f40, unused=&lt;optimized out&gt;)
+at flow-worker.c:194
+#20 0x0000000000550824 in TmThreadsSlotVarRun (tv=tv@entry=0x2428df0, p=p@entry=0x7fffec24aa40, slot=slot@entry=0x2428f00) at tm-threads.c:128
+#21 0x0000000000553275 in TmThreadsSlotVar (td=0x2428df0) at tm-threads.c:585
+#22 0x00007ffff5d89df3 in start_thread () from /lib64/libpthread.so.0
+#23 0x00007ffff58b33dd in clone () from /lib64/libc.so.6
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="review_4.0.1.html" class="btn btn-neutral" title="suricata4.0.1源码分析" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016-2017, promise.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.3',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
