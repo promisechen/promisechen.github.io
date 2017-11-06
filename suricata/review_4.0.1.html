@@ -251,6 +251,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/xiaomi.html">小米路由器上开发网络监控程序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#mini">小米路由器mini刷机</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#ssh">开启ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#id3">开发环境搭建</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#libpcap">交叉编译libpcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#id5">远程抓包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#gdb">gdb调试</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
@@ -537,7 +546,7 @@
 </div>
 </li>
 </ul>
-<p>当前进度：开始分析AppLayerSetup-&gt;AppLayerParserRegisterProtocolParsers-&gt;RegisterHTPParsers</p>
+<p>当前进度：开始分析PostConfLoadedSetup-&gt;TmqhSetup</p>
 </div>
 <div class="section" id="id2">
 <h2>概述及全局观览<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -560,10 +569,16 @@
 <tr class="row-odd"><td>alpd_ctx</td>
 <td>协议识别的全局变量，存放了各种协议识别使用的数据：如字符串，状态机等</td>
 </tr>
+<tr class="row-even"><td>sigmatch_table</td>
+<td>特征关键字匹配表，sid、priority、msg、within、distance等等。该变量主要应用于应用的识别和规则的检测。</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="alpd-ctx">
 <h4>alpd_ctx介绍及内存布局<a class="headerlink" href="#alpd-ctx" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="sigmatch-table-todo">
+<h4>sigmatch_table介绍(todo)<a class="headerlink" href="#sigmatch-table-todo" title="永久链接至标题">¶</a></h4>
 </div>
 </div>
 </div>
@@ -612,7 +627,7 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
 <div class="section" id="postconfloadedsetup">
 <h3>PostConfLoadedSetup<a class="headerlink" href="#postconfloadedsetup" title="永久链接至标题">¶</a></h3>
 <p class="graphviz">
-<img src="../_images/graphviz-30462bae9944a69a7a3b73f99bcbe605292d9ab8.png" alt="digraph G {
+<img src="../_images/graphviz-4c344b74d79a7f4c10120406a24b95f62eba75a7.png" alt="digraph G {
 
         label=&quot;PostConfLoadedSetup处理流程&quot;
 
@@ -634,6 +649,11 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
         SCHInfoLoadFromConfig [label=&quot;SCHInfoLoadFromConfig&quot;] ;
         AppLayerProtoDetectPMMapSignatures [label=&quot;AppLayerProtoDetectPMMapSignatures &quot;] ;
         AppLayerProtoDetectPMPrepareMpm [label=&quot;AppLayerProtoDetectPrepareState&quot;] ;
+        SigTableSetup [label=&quot;SigTableSetup\n注册关键字回调函数 &quot;] ;
+        DetectSidRegister [label=&quot;DetectSidRegister&quot;] ;
+        DetectContentRegister [label=&quot;DetectContentRegister&quot;] ;
+        DetectUricontentRegister [label=&quot;DetectUricontentRegister&quot;] ;
+        DetectBufferTypeFinalizeRegistration [label=&quot;DetectBufferTypeFinalizeRegistration&quot;] ;
         dengdeng [label=&quot;......&quot;] ;
         PostConfLoadedSetup-&gt;SpmTableSetup
         PostConfLoadedSetup-&gt;MpmTableSetup
@@ -653,7 +673,12 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
             AppLayerProtoDetectPrepareState-&gt;AppLayerProtoDetectPMMapSignatures
             AppLayerProtoDetectPrepareState-&gt;AppLayerProtoDetectPMPrepareMpm
         PostConfLoadedSetup-&gt;SCHInfoLoadFromConfig
-
+        PostConfLoadedSetup-&gt;SigTableSetup
+            SigTableSetup-&gt;DetectSidRegister
+            SigTableSetup-&gt;DetectContentRegister
+            SigTableSetup-&gt;dengdeng
+            SigTableSetup-&gt;DetectUricontentRegister
+            SigTableSetup-&gt;DetectBufferTypeFinalizeRegistration
 
 }
 
@@ -719,15 +744,81 @@ MpmTableSetup(注册多模式匹配算法)-&gt;SpmTableSetup(注册单模式匹�
 <div><p>将配置文件中的host-os-policy的配置加入到一棵radix树上，在匹配是使用。(todo:识别或重组时使用？？)</p>
 </div></blockquote>
 </li>
+<li><dl class="first docutils">
+<dt>SigTableSetup</dt>
+<dd><p class="first">注册关键字的各种回调,比如注册sid,content等相关回调，在读取加载规则库、应用识别的时候将调用相关回调函数.
+目前看到这些函数应该是被SigInit调用.这里注册的关键非常的多，可以慢慢分析自己感兴趣的,其中发现很多关键字没有注册
+Match这个回调。http相关的注册项有很多,http的一些注册还会初始化一些资源,后面以DetectHttpUriRegister为例。</p>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>DetectSidRegister</dt>
+<dd><p class="first">注册了重要的函数DetectSidSetup，该函数将在加载规则库的时候，被调用。</p>
+<p>DetectSidSetup将会把规则库中的sidstr赋给s-&gt;id</p>
+<blockquote class="last">
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>static int DetectSidSetup (DetectEngineCtx *de_ctx, Signature *s, const char *sidstr)
+{
+
+    unsigned long id = 0;
+    char *endptr = NULL;
+    id = strtoul(sidstr, &amp;endptr, 10);
+    if (endptr == NULL || *endptr != &#39;\0&#39;) {
+
+    SCLogError(SC_ERR_INVALID_SIGNATURE, &quot;invalid character as arg &quot;
+    &quot;to sid keyword&quot;);
+    goto error;
+    }
+    if (id &gt;= UINT_MAX) {
+
+    SCLogError(SC_ERR_INVALID_NUMERIC_VALUE, &quot;sid value to high, max %u&quot;, UINT_MAX);
+    goto error;
+    }
+    if (id == 0) {
+
+    SCLogError(SC_ERR_INVALID_NUMERIC_VALUE, &quot;sid value 0 is invalid&quot;);
+    goto error;
+    }
+    if (s-&gt;id &gt; 0) {
+
+    SCLogError(SC_ERR_INVALID_RULE_ARGUMENT, &quot;duplicated &#39;sid&#39; keyword detected&quot;);
+    goto error;
+    }
+
+    s-&gt;id = (uint32_t)id;
+    return 0;
+
+    error:
+    return -1;
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p class="first">DetectPriorityRegister</p>
+<p>注册了重要的函数DetectPrioritySetup，该函数将在加载规则库的时候，被调用。
+DetectPrioritySetup将把规则库中的rawstr赋值给s-&gt;prio,但是相对DetectSidSetup多了一些pcre_exec、pcre_copy_substring相关函数调用,做什么用的呢？？
+他们主要是判断关键字是否合法，并提取相关字段，注意regex、regex_study是static类型的,这2个全局变量在很多文件中都存在。</p>
+</li>
+<li><p class="first">DetectHttpUriRegister
+也注册了Setup回调。注册回调之后，重点注册了DetectAppLayerMpmRegister和DetectAppLayerInspectEngineRegister(todo:检查相关注册)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id4">
 <h2>开源引擎借鉴<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <blockquote>
-<div>支持协议维度识别和解析
-协议识别、解析插件化
-特征区分服务端和客户端</div></blockquote>
+<div><div class="line-block">
+<div class="line">支持协议维度识别和解析</div>
+<div class="line">协议识别、解析插件化</div>
+<div class="line">特征区分服务端和客户端</div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
