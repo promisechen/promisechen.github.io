@@ -251,6 +251,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../kbase/xiaomi.html">小米路由器上开发网络监控程序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#mini">小米路由器mini刷机</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#ssh">开启ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#id3">开发环境搭建</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#libpcap">交叉编译libpcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#id5">远程抓包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kbase/xiaomi.html#gdb">gdb调试</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dpdk/index.html">dpdk相关</a><ul>
@@ -405,9 +414,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#runmoderegisterrunmodes">RunModeRegisterRunModes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#globalsinitpreconfig">GlobalsInitPreConfig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postconfloadedsetup">PostConfLoadedSetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#postconfloadeddetectsetup">PostConfLoadedDetectSetup</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">开源引擎借鉴</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考文献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">开源引擎借鉴</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="review.html">源码笔记(3.2.1)</a><ul>
@@ -537,7 +548,7 @@
 </div>
 </li>
 </ul>
-<p>当前进度：开始分析AppLayerSetup-&gt;AppLayerParserRegisterProtocolParsers-&gt;RegisterHTPParsers</p>
+<p>当前进度：开始分析PostConfLoadedDetectSetup-&gt;DetectEngineCtxInitReal-&gt;ActionInitConfig</p>
 </div>
 <div class="section" id="id2">
 <h2>概述及全局观览<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -560,10 +571,51 @@
 <tr class="row-odd"><td>alpd_ctx</td>
 <td>协议识别的全局变量，存放了各种协议识别使用的数据：如字符串，状态机等</td>
 </tr>
+<tr class="row-even"><td>sigmatch_table</td>
+<td>特征关键字匹配表，sid、priority、msg、within、distance等等。该变量主要应用于应用的识别和规则的检测。</td>
+</tr>
+<tr class="row-odd"><td>tmqh_table</td>
+<td>提供了4种类型队列:simple,flow,packetpool,nfq,其中nfq不同于其他三种队列，他是内核中的Netfilter Queue。
+simple是简单的先入先出的普通队列,packetpool</td>
+</tr>
+<tr class="row-even"><td>tmm_modules</td>
+<td>线程模块的全局数组，有pcap/pfring/netmap等收包类线程，有flow管理类</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="alpd-ctx">
 <h4>alpd_ctx介绍及内存布局<a class="headerlink" href="#alpd-ctx" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="sigmatch-table-todo">
+<h4>sigmatch_table介绍(todo)<a class="headerlink" href="#sigmatch-table-todo" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="tmqh-tabletmqh">
+<h4>tmqh_table对应的Tmqh结构体说明<a class="headerlink" href="#tmqh-tabletmqh" title="永久链接至标题">¶</a></h4>
+<p>todo:tm_queuehandlers.h中</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>enum {
+
+    TMQH_SIMPLE,
+    TMQH_NFQ,
+    TMQH_PACKETPOOL,
+    TMQH_FLOW,
+
+    TMQH_SIZE,
+};
+typedef struct Tmqh_ {
+
+    const char *name;
+    Packet *(*InHandler)(ThreadVars *);           /*&lt; 是针对ThreadVars的输入，而非入队的意思，即从相应队列取出Packet。by clx 20171107 */
+    void (*InShutdownHandler)(ThreadVars *);      /*&lt; 貌似是把队列中的报文都拿出来的意思??。by clx 20171107 */
+    void (*OutHandler)(ThreadVars *, Packet *);   /*&lt; 将报文压入队列中。by clx 20171107*/
+    void *(*OutHandlerCtxSetup)(const char *);    /*&lt; 初始化线程上下文。by clx 20171107*/
+    void (*OutHandlerCtxFree)(void *);            /*&lt; 释放线程上下文。by clx 20171107*/
+    void (*RegisterTests)(void);
+} Tmqh;
+Tmqh tmqh_table[TMQH_SIZE];
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -612,8 +664,8 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
 <div class="section" id="postconfloadedsetup">
 <h3>PostConfLoadedSetup<a class="headerlink" href="#postconfloadedsetup" title="永久链接至标题">¶</a></h3>
 <p class="graphviz">
-<img src="../_images/graphviz-30462bae9944a69a7a3b73f99bcbe605292d9ab8.png" alt="digraph G {
-
+<img src="../_images/graphviz-c88f8a58ad8763fda960ee13993e3e3703fdd280.png" alt="digraph G {
+        size=&quot;1024,1024&quot;;
         label=&quot;PostConfLoadedSetup处理流程&quot;
 
         PostConfLoadedSetup  [label=&quot;PostConfLoadedSetup&quot;] ;
@@ -634,7 +686,38 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
         SCHInfoLoadFromConfig [label=&quot;SCHInfoLoadFromConfig&quot;] ;
         AppLayerProtoDetectPMMapSignatures [label=&quot;AppLayerProtoDetectPMMapSignatures &quot;] ;
         AppLayerProtoDetectPMPrepareMpm [label=&quot;AppLayerProtoDetectPrepareState&quot;] ;
+        SigTableSetup [label=&quot;SigTableSetup\n注册关键字回调函数 &quot;] ;
+        DetectSidRegister [label=&quot;DetectSidRegister&quot;] ;
+        DetectContentRegister [label=&quot;DetectContentRegister&quot;] ;
+        DetectUricontentRegister [label=&quot;DetectUricontentRegister&quot;] ;
+        DetectBufferTypeFinalizeRegistration [label=&quot;DetectBufferTypeFinalizeRegistration&quot;] ;
+        TmqhSetup [label=&quot;TmqhSetup\n注册队列接口&quot;] ;
+        TmqhSimpleRegister [label=&quot;TmqhSimpleRegister\n普通队列&quot;] ;
+        TmqhNfqRegister [label=&quot;TmqhNfqRegister\n内核Netfilter 队列&quot;] ;
+        TmqhPacketpoolRegister [label=&quot;TmqhPacketpoolRegister\n类似mbuf&quot;] ;
+        TmqhFlowRegister [label=&quot;TmqhFlowRegister\n根据五元组hash的队列&quot;]
+        SigParsePrepare [label=&quot;SigParsePrepare\n初始化sig解析正则库&quot;]
+        SCProtoNameInit [label=&quot;SCProtoNameInit\n从/etc/protocols获取协议名称&quot;]
+        xxxTagInit [label=&quot;TagInitCtx/PacketAlertTagInit/ThresholdInit\nHostBitInitCtx/IPPairBitInitCtx&quot;]
+        RegisterAllModules [label=&quot;RegisterAllModules\n注册各线程模块回调&quot;]
+        TmModuleFlowManagerRegister [label=&quot;TmModuleFlowManagerRegister\n流表管理&quot;]
+        TmModuleReceiveAFPRegister [label=&quot;TmModuleReceiveAFPRegister\nafp接收线程&quot;]
+        TmModuleDecodeAFPRegister [label=&quot;TmModuleDecodeAFPRegister\nafp解码线程&quot;]
+        AppLayerHtpNeedFileInspection [label=&quot;AppLayerHtpNeedFileInspection\n设置htp库部分配置&quot;]
+        StorageFinalize [label=&quot;StorageFinalize\n初始化storage_map&quot;]
+        TmModuleRunInit [label=&quot;TmModuleRunInit\n调用tm的init&quot;]
+        HostInitConfig [label=&quot;HostInitConfig\n主机内存初始化&quot;]
+
+        PreRunInit [label=&quot;PreRunInit\n流表，ip分片重组，tcp分片重组分配内存并进行初始化&quot;]
+        DefragInit [label=&quot;DefragInit\nIP分片内存初始化&quot;]
+        FlowInitConfig [label=&quot;FlowInitConfig\nFLOW内存初始化&quot;]
+        IPPairInitConfig [label=&quot;IPPairInitConfig\nIP声望内存初始化&quot;]
+        StreamTcpInitConfig [label=&quot;StreamTcpInitConfig\n流重组内存初始化&quot;]
+
         dengdeng [label=&quot;......&quot;] ;
+        RegisterXXXParsers [label=&quot;......&quot;] ;
+        DetectXXXXRegister [label=&quot;......&quot;] ;
+        TmModuleReceiveXXXRegister [label=&quot;......&quot;] ;
         PostConfLoadedSetup-&gt;SpmTableSetup
         PostConfLoadedSetup-&gt;MpmTableSetup
         PostConfLoadedSetup-&gt;AppLayerSetup
@@ -647,14 +730,42 @@ SupportFastPatternForSigMatchTypes将DETECT_SM_LIST_PMATCH加入sm_fp_support_sm
                     RegisterHTPParsers-&gt;HTPRegisterPatternsForProtocolDetection
                     RegisterHTPParsers-&gt;AppLayerParserRegisterXXXXX
                 AppLayerParserRegisterProtocolParsers-&gt;RegisterFTPParsers
-                AppLayerParserRegisterProtocolParsers-&gt;dengdeng
+                AppLayerParserRegisterProtocolParsers-&gt;RegisterXXXParsers
                 AppLayerParserRegisterProtocolParsers-&gt;RegisterSSLParsers
         PostConfLoadedSetup-&gt;AppLayerProtoDetectPrepareState
             AppLayerProtoDetectPrepareState-&gt;AppLayerProtoDetectPMMapSignatures
             AppLayerProtoDetectPrepareState-&gt;AppLayerProtoDetectPMPrepareMpm
         PostConfLoadedSetup-&gt;SCHInfoLoadFromConfig
+        PostConfLoadedSetup-&gt;SigTableSetup
+            SigTableSetup-&gt;DetectSidRegister
+            SigTableSetup-&gt;DetectContentRegister
+            SigTableSetup-&gt;DetectXXXXRegister
+            SigTableSetup-&gt;DetectUricontentRegister
+            SigTableSetup-&gt;DetectBufferTypeFinalizeRegistration
+        PostConfLoadedSetup-&gt;TmqhSetup
+            TmqhSetup-&gt;TmqhSimpleRegister
+            TmqhSetup-&gt;TmqhNfqRegister
+            TmqhSetup-&gt;TmqhPacketpoolRegister
+            TmqhSetup-&gt;TmqhFlowRegister
+        PostConfLoadedSetup-&gt;SigParsePrepare
+        PostConfLoadedSetup-&gt;SCProtoNameInit
 
+        PostConfLoadedSetup-&gt;xxxTagInit
+        PostConfLoadedSetup-&gt;RegisterAllModules
+            RegisterAllModules-&gt;TmModuleFlowManagerRegister
+            RegisterAllModules-&gt;TmModuleReceiveXXXRegister
+            RegisterAllModules-&gt;TmModuleReceiveAFPRegister
+            RegisterAllModules-&gt;TmModuleDecodeAFPRegister
+        PostConfLoadedSetup-&gt;AppLayerHtpNeedFileInspection
+        PostConfLoadedSetup-&gt;StorageFinalize
+        PostConfLoadedSetup-&gt;TmModuleRunInit
 
+        PostConfLoadedSetup-&gt;HostInitConfig
+        PostConfLoadedSetup-&gt;PreRunInit
+            PreRunInit-&gt;DefragInit
+            PreRunInit-&gt;FlowInitConfig
+            PreRunInit-&gt;IPPairInitConfig
+            PreRunInit-&gt;StreamTcpInitConfig
 }
 
 MpmTableSetup(注册多模式匹配算法)-&gt;SpmTableSetup(注册单模式匹配算法)-&gt;网卡offloading、checksum等配置读取-&gt;AppLayerSetup" />
@@ -719,15 +830,603 @@ MpmTableSetup(注册多模式匹配算法)-&gt;SpmTableSetup(注册单模式匹�
 <div><p>将配置文件中的host-os-policy的配置加入到一棵radix树上，在匹配是使用。(todo:识别或重组时使用？？)</p>
 </div></blockquote>
 </li>
+<li><dl class="first docutils">
+<dt>SigTableSetup</dt>
+<dd><p class="first">注册关键字的各种回调,比如注册sid,content等相关回调，在读取加载规则库、应用识别的时候将调用相关回调函数.
+目前看到这些函数应该是被SigInit调用.这里注册的关键非常的多，可以慢慢分析自己感兴趣的,其中发现很多关键字没有注册
+Match这个回调。http相关的注册项有很多,http的一些注册还会初始化一些资源,后面以DetectHttpUriRegister为例。</p>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>DetectSidRegister</dt>
+<dd><p class="first">注册了重要的函数DetectSidSetup，该函数将在加载规则库的时候，被调用。</p>
+<p>DetectSidSetup将会把规则库中的sidstr赋给s-&gt;id</p>
+<blockquote class="last">
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>static int DetectSidSetup (DetectEngineCtx *de_ctx, Signature *s, const char *sidstr)
+{
+
+    unsigned long id = 0;
+    char *endptr = NULL;
+    id = strtoul(sidstr, &amp;endptr, 10);
+    if (endptr == NULL || *endptr != &#39;\0&#39;) {
+
+    SCLogError(SC_ERR_INVALID_SIGNATURE, &quot;invalid character as arg &quot;
+    &quot;to sid keyword&quot;);
+    goto error;
+    }
+    if (id &gt;= UINT_MAX) {
+
+    SCLogError(SC_ERR_INVALID_NUMERIC_VALUE, &quot;sid value to high, max %u&quot;, UINT_MAX);
+    goto error;
+    }
+    if (id == 0) {
+
+    SCLogError(SC_ERR_INVALID_NUMERIC_VALUE, &quot;sid value 0 is invalid&quot;);
+    goto error;
+    }
+    if (s-&gt;id &gt; 0) {
+
+    SCLogError(SC_ERR_INVALID_RULE_ARGUMENT, &quot;duplicated &#39;sid&#39; keyword detected&quot;);
+    goto error;
+    }
+
+    s-&gt;id = (uint32_t)id;
+    return 0;
+
+    error:
+    return -1;
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p class="first">DetectPriorityRegister</p>
+<p>注册了重要的函数DetectPrioritySetup，该函数将在加载规则库的时候，被调用。
+DetectPrioritySetup将把规则库中的rawstr赋值给s-&gt;prio,但是相对DetectSidSetup多了一些pcre_exec、pcre_copy_substring相关函数调用,做什么用的呢？？
+他们主要是判断关键字是否合法，并提取相关字段，注意regex、regex_study是static类型的,这2个全局变量在很多文件中都存在。</p>
+</li>
+<li><p class="first">DetectHttpUriRegister
+也注册了Setup回调。注册回调之后，重点注册了DetectAppLayerMpmRegister和DetectAppLayerInspectEngineRegister(todo:检查相关注册)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">TmqhSetup</p>
+<blockquote>
+<div><blockquote>
+<div><p>注册4中类型队列，后续各线程交互时使用</p>
+</div></blockquote>
+<ul>
+<li><p class="first">TmqhSimpleRegister</p>
+<blockquote>
+<div><p>简单的普通的入队出队队列，主要注册了TmqhInputSimple和TmqhOutputSimple，TmqhInputSimple
+输入回调，即从相应队列中获取报文，这里的input是针对ThreadVars来说的。</p>
+</div></blockquote>
+</li>
+<li><p class="first">TmqhNfqRegister</p>
+<blockquote>
+<div><p>内核层面的队列，即 Netfilter Queue队列，与其他三种队列不同，他只需要注册OutHandler</p>
+</div></blockquote>
+</li>
+<li><p class="first">TmqhPacketpoolRegister</p>
+<blockquote>
+<div><p>这个更像是一个dpdk中的mbuf，内核中的skb_mbuf之类的ringbuffer. 这个其实更像说是内存池，这种队列应该是用在
+收包这一层层面。</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>TmqhFlowRegister</dt>
+<dd><blockquote class="first">
+<div><p>根据flow进行分发的队列,出队列与Simple是一样的，入队会根据flow的hash进行除余得到相应的队列。
+根据配置的不同，将选择不同的分发算法:TmqhOutputFlowHash TmqhOutputFlowIPPair</p>
+</div></blockquote>
+<p>TmqhOutputFlowIPPair的部分代码</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span>void TmqhOutputFlowIPPair(ThreadVars *tv, Packet *p)
+{
+
+    int16_t qid = 0;
+    uint32_t addr_hash = 0;
+    int i;
+
+    TmqhFlowCtx *ctx = (TmqhFlowCtx *)tv-&gt;outctx;
+
+    if (p-&gt;src.family == AF_INET6) {
+
+    for (i = 0; i &lt; 4; i++) {
+
+        addr_hash += p-&gt;src.addr_data32[i] + p-&gt;dst.addr_data32[i];
+    }
+    } else {
+
+        addr_hash = p-&gt;src.addr_data32[0] + p-&gt;dst.addr_data32[0];
+    }
+
+    /* we don&#39;t have to worry about possible overflow, since
+    * ctx-&gt;size will be lesser than 2 ** 31 for sure */
+      qid = addr_hash % ctx-&gt;size;
+
+    PacketQueue *q = ctx-&gt;queues[qid].q;
+    SCMutexLock(&amp;q-&gt;mutex_q);
+    PacketEnqueue(q, p);
+    SCCondSignal(&amp;q-&gt;cond_q);
+    SCMutexUnlock(&amp;q-&gt;mutex_q);
+
+    return;
+}
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">SigParsePrepare</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>初始化config_pcre、config_pcre_extra、option_pcre三个全局变量，后面解析使用</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span></span>opts |= PCRE_UNGREEDY;
+config_pcre = pcre_compile(regexstr, opts, &amp;eb, &amp;eo, NULL);
+if(config_pcre == NULL)
+{
+
+    SCLogError(SC_ERR_PCRE_COMPILE, &quot;pcre compile of \&quot;%s\&quot; failed at offset %&quot; PRId32 &quot;: %s&quot;, regexstr, eo, eb);
+    exit(1);
+}
+
+config_pcre_extra = pcre_study(config_pcre, 0, &amp;eb);
+if(eb != NULL)
+{
+
+    SCLogError(SC_ERR_PCRE_STUDY, &quot;pcre study failed: %s&quot;, eb);
+    exit(1);
+}
+
+regexstr = OPTION_PCRE;
+opts |= PCRE_UNGREEDY;
+
+option_pcre = pcre_compile(regexstr, opts, &amp;eb, &amp;eo, NULL);
+if(option_pcre == NULL)
+{
+
+    SCLogError(SC_ERR_PCRE_COMPILE, &quot;pcre compile of \&quot;%s\&quot; failed at offset %&quot; PRId32 &quot;: %s&quot;, regexstr, eo, eb);
+    exit(1);
+}
+</pre></div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>xxxTagInit</dt>
+<dd><p class="first last">存储结构的初始化，有三种存储方式STORAGE_HOSTSTORAGE_FLOWSTORAGE_IPPAIR分别用于不同类型的存储。
+这里共初始化了host_tag_id、flow_tag_id、threshold_id、host_bit_id、ippair_bit_id5个储存实体对象。
+应该与与规则中的tag、threshould关键字的实现相关;</p>
+</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span>static StorageList *storage_list = NULL; /**&lt; by clx 20171109 储存链表*/
+static int storage_max_id[STORAGE_MAX];  /**&lt; by clx 20171109 三种储存方式的id编号*/
+static int storage_registraton_closed = 0; /**&lt; by clx 20171109 关闭标记，当设置为1时，不在注册*/
+static StorageMapping **storage_map = NULL;/**&lt; by clx 20171109 将储存链表上所有storage实体做映射成二维数组，
+通过储存类型和在该类型的储存方式对应的id进行读取。如storage_map[STORAGE_HOST][host_tag_id]读取host_tag_id的存储注册函数*/
+</pre></div>
+</div>
+</li>
+<li><dl class="first docutils">
+<dt>DetectAddressTestConfVars、DetectPortTestConfVars</dt>
+<dd><p class="first last">检查配置文件中vars.address-groups和vars.port-groups的合法性。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RegisterAllModules</dt>
+<dd><p class="first last">注册线程模式:流表管理相关、报文接收方式(pcap/pfring/netmap等)
+线程类型共下面几类:其中文接收方式使用的是RECEIVE_TM和DECODE_TM，
+其中五元组表有MANAGEMENT_TM|TM_FLAG_STREAM_TM|TM_FLAG_DETECT_TM三个专用类型,以af-packet为例</p>
+</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#define TM_FLAG_RECEIVE_TM      0x01</span>
+<span class="c1">#define TM_FLAG_DECODE_TM       0x02</span>
+<span class="c1">#define TM_FLAG_STREAM_TM       0x04</span>
+<span class="c1">#define TM_FLAG_DETECT_TM       0x08</span>
+<span class="c1">#define TM_FLAG_LOGAPI_TM       0x10 /**&lt; TM is run by Log API */</span>
+<span class="c1">#define TM_FLAG_MANAGEMENT_TM   0x20</span>
+<span class="c1">#define TM_FLAG_COMMAND_TM      0x40</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>以af-packet为例:TmModuleDecodeAFPRegister和TmModuleReceiveAFPRegister分别定义了收包和解码的回调。</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span></span>void TmModuleReceiveAFPRegister (void)
+{
+    tmm_modules[TMM_RECEIVEAFP].name = &quot;ReceiveAFP&quot;;
+    tmm_modules[TMM_RECEIVEAFP].ThreadInit = NoAFPSupportExit;
+    tmm_modules[TMM_RECEIVEAFP].Func = NULL;
+    tmm_modules[TMM_RECEIVEAFP].ThreadExitPrintStats = NULL;
+    tmm_modules[TMM_RECEIVEAFP].ThreadDeinit = NULL;
+    tmm_modules[TMM_RECEIVEAFP].RegisterTests = NULL;
+    tmm_modules[TMM_RECEIVEAFP].cap_flags = 0;
+    tmm_modules[TMM_RECEIVEAFP].flags = TM_FLAG_RECEIVE_TM;
+}
+
+/**
+* \brief Registration Function for DecodeAFP.
+* \todo Unit tests are needed for this module.
+*/
+void TmModuleDecodeAFPRegister (void)
+{
+    tmm_modules[TMM_DECODEAFP].name = &quot;DecodeAFP&quot;;
+    tmm_modules[TMM_DECODEAFP].ThreadInit = NoAFPSupportExit;
+    tmm_modules[TMM_DECODEAFP].Func = NULL;
+    tmm_modules[TMM_DECODEAFP].ThreadExitPrintStats = NULL;
+    tmm_modules[TMM_DECODEAFP].ThreadDeinit = NULL;
+    tmm_modules[TMM_DECODEAFP].RegisterTests = NULL;
+    tmm_modules[TMM_DECODEAFP].cap_flags = 0;
+    tmm_modules[TMM_DECODEAFP].flags = TM_FLAG_DECODE_TM;
+}
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">AppLayerHtpNeedFileInspection</p>
+<blockquote>
+<div><p>为htp库设置一些标记，如解析响应、解析请求的标记</p>
+</div></blockquote>
+</li>
+<li><p class="first">StorageFinalize</p>
+<blockquote>
+<div><p>将xxxTagInit注册的实体，将储存链表上所有storage实体做映射成二维数组，
+通过储存类型和在该类型的储存方式对应的id进行读取。如storage_map[STORAGE_HOST][host_tag_id]读取host_tag_id的存储注册函数</p>
+</div></blockquote>
+</li>
+<li><p class="first">TmModuleRunInit</p>
+<blockquote>
+<div><p>调用tmm_modules[i]-&gt;Init进行模块初始化</p>
+</div></blockquote>
+</li>
+<li><p class="first">MayDaemonize</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">后台运行,检查是否进入Daemon模式。若需要进入Daemon模式，则会检测pidfile是</div>
+<div class="line">否已经存在（daemon下只能有一个实例运行），然后进行Daemonize，最后创建一个</div>
+<div class="line">pidfile。Daemonize的主要思路是：fork-&gt;子进程调用setsid创建一个新的session</div>
+<div class="line">，关闭stdin、stdout、stderr，并告诉父进程 –&gt; 父进程等待子进程通知，然后退</div>
+<div class="line">出 –&gt; 子进程继续执行.</div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">InitSignalHandler</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">注册各种信号,初始化信号handler。首先为SIGINT（ctrl-c触发）和SIGTERM（不带</div>
+<div class="line">参数kill时触发）这两个常规退出信号分别注册handler，对SIGINT的处理是设置程</div>
+<div class="line">序的状态标志为STOP，即让程序优雅地退出；而对SIGTERM是设置为KILL，即强杀。</div>
+<div class="line">接着，程序会忽略SIGPIPE（这个信号通常是在Socket通信时向已关闭的连接另一端</div>
+<div class="line">发送数据时收到）和SIGSYS（当进程尝试执行一个不存在的系统调用时收到）信号，</div>
+<div class="line">以加强程序的容错性和健壮性。</div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>HostInitConfig</dt>
+<dd><p class="first last">与FlowInitConfig类似: host_hash,host_config</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SCAsn1LoadConfig</dt>
+<dd><p class="first last">读取asn1-max-frames设置到全局变量asn1_max_frames_config</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CoredumpLoadConfig</dt>
+<dd><p class="first last">coredump设置</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DecodeGlobalConfig</dt>
+<dd><p class="first last">设置是否解析g_teredo_enabled</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PreRunInit</dt>
+<dd><dl class="first last docutils">
+<dt>为流表，ip分片重组，tcp分片重组分配内存并进行初始化</dt>
+<dd><ul class="first last">
+<li><p class="first">StatsInit 统计初始化</p>
+</li>
+<li><p class="first">DefragInit 分片重组,暂不关心</p>
+</li>
+<li><dl class="first docutils">
+<dt>FlowInitConfig</dt>
+<dd><p class="first">初始化flow的配置，flow_config是flow的全局配置,flow_hash是hash表,flow_spare_q flow节点
+的队列，调用FlowAlloc分配内存之后，将把分配的flow放到flow_spare_q队列中。</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span>/* global flow config */
+typedef struct FlowCnf_
+{
+
+  uint32_t hash_rand;
+  uint32_t hash_size;  /**&lt;by clx 20171110 hash筒的大小*/
+  uint64_t memcap;     /**&lt;by clx 20171110 flows最大占的内存限制*/
+  uint32_t max_flows;
+  uint32_t prealloc;   /**&lt;by clx 20171110 最大并发数*/
+
+  uint32_t timeout_new;
+  uint32_t timeout_est;
+
+  uint32_t emerg_timeout_new;
+  uint32_t emerg_timeout_est;
+  uint32_t emergency_recovery;
+
+} FlowConfig;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IPPairInitConfig</dt>
+<dd><p class="first last">类似FlowInitConfig初始化ip的相关内存</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">LogFilestoreInitConfig 文件存储的配置</p>
+</li>
+<li><p class="first">StreamTcpInitConfig 流重组的初始化,todo:暂不看tcp流重组的细节</p>
+</li>
+<li><p class="first">AppLayerParserPostStreamSetup todo:暂不看tcp流重组的细节</p>
+</li>
+<li><p class="first">AppLayerRegisterGlobalCounters todo:设置一些计数配置，后面研究下咋用的。</p>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="postconfloadeddetectsetup">
+<h3>PostConfLoadedDetectSetup<a class="headerlink" href="#postconfloadeddetectsetup" title="永久链接至标题">¶</a></h3>
+<ul>
+<li><dl class="first docutils">
+<dt>SCClassConfInit  解析classification.config配置文件相关；为解析classification.config</dt>
+<dd><dl class="first last docutils">
+<dt>，注册正则匹配handle和相关正则。</dt>
+<dd><p class="first">从classification.config摘抄，下面的第一个规则指定了类型为attempted-admin，但是
+他又重新设定了优先级为10，所以他最终优先级为10.而第二个规则只指定了attempted-admin，那么他就
+使用默认优先级1.</p>
+<blockquote class="last">
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>#
+# config classification:shortname,short description,priority
+#
+config classification: attempted-admin,Attempted Administrator Privilege Gain,1
+
+# Here are a few example rules:
+#
+#   alert TCP any any -&gt; any 80 (msg: &quot;EXPLOIT ntpdx overflow&quot;;
+#       dsize: &gt; 128; classtype:attempted-admin; priority:10;
+#
+#   alert TCP any any -&gt; any 25 (msg:&quot;SMTP expn root&quot;; flags:A+; \
+#             content:&quot;expn root&quot;; nocase; classtype:attempted-recon;)
+#
+# The first rule will set its type to &quot;attempted-admin&quot; and override
+# the default priority for that type to 10.
+#
+# The second rule set its type to &quot;attempted-recon&quot; and set its
+# priority to the default for that type.
+#
+</pre></div>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SCReferenceConfInit();</dt>
+<dd><p class="first">解析reference.config配置文件相关；为解析reference.config，注册则匹配handle和相关正则。
+对应的cveexploitdb等相关连接</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span># config reference: system URL
+config reference: bugtraq   http://www.securityfocus.com/bid/
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SetupDelayedDetect</dt>
+<dd><p class="first last">读取detect.delayed-detect的配置，detect.delayed-detect表示在加载规则库之前就启动
+抓包,这样能够在IPS模式下减少系统的down time（宕机时间)，但注意载离线模式下，将忽略改标记。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DetectEngineMultiTenantSetup</dt>
+<dd><p class="first last">目前给我的感觉是多级的检测,后面在看吧。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DetectEngineCtxInit/DetectEngineCtxInitMinimal</dt>
+<dd><blockquote class="first">
+<div><p>初始化检测引擎上下文。</p>
+</div></blockquote>
+<ul class="last">
+<li><p class="first">DetectEngineCtxLoadConf 加载配置</p>
+</li>
+<li><p class="first">创建各种hash表</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>SigGroupHeadHashInit(de_ctx);
+MpmStoreInit(de_ctx);
+ThresholdHashInit(de_ctx);
+DetectParseDupSigHashInit(de_ctx);
+DetectAddressMapInit(de_ctx);
+(void)SRepInit(de_ctx);
+</pre></div>
+</div>
+</li>
+<li><p class="first">SCClassConfLoadClassficationConfigFile
+&nbsp; &nbsp;读取classfication的配置,并完成初始化</p>
+<ul>
+<li><dl class="first docutils">
+<dt>SCClassConfInitContextAndLocalResources</dt>
+<dd><p class="first last">注册hashtable de_ctx-&gt;class_conf_ht初始化以及fd文件描述符</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SCClassConfParseFile</dt>
+<dd><p class="first">读取解析并加入de_ctx-&gt;class_conf_ht hash表中</p>
+<blockquote class="last">
+<div><ul>
+<li><dl class="first docutils">
+<dt>SCClassConfIsLineBlankOrComment</dt>
+<dd><p class="first last">过滤掉空行和注释行。</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">SCClassConfAddClasstype</p>
+<blockquote>
+<div><p>解析一行并将相关字符  付给 SCClassConfClasstype 结构，而后将
+其加到de_ctx-&gt;class_conf_ht 　hash表中，至此classification.config的
+文件解析相关完毕。</p>
+<p>对classification.config的做个简单的总结:
+在PostConfLoadedDetectSetup－－》SCClassConfInit中注册了相关正则匹配对象regex，在SCClassConfInitContextAndLocalResources
+中注册了de_ctx-&gt;class_conf_ht hash表，最后在SCClassConfAddClasstype将classification.config的相关
+配置都加载到de_ctx-&gt;class_conf_ht hash表中。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>/**
+ * \brief Parses a line from the classification file and adds it to Classtype
+ *        hash table in DetectEngineCtx, i.e. DetectEngineCtx-&gt;class_conf_ht.
+ *
+ * \param rawstr Pointer to the string to be parsed.
+ * \param index  Relative index of the string to be parsed.
+ * \param de_ctx Pointer to the Detection Engine Context.
+ *
+ * \retval  0 On success.
+ * \retval -1 On failure.
+ */
+static int SCClassConfAddClasstype(char *rawstr, uint8_t index, DetectEngineCtx *de_ctx)
+{
+
+    char ct_name[64];
+    char ct_desc[512];
+    char ct_priority_str[16];
+    int ct_priority = 0;
+    uint8_t ct_id = index;
+
+    SCClassConfClasstype *ct_new = NULL;
+    SCClassConfClasstype *ct_lookup = NULL;
+
+#define MAX_SUBSTRINGS 30
+    int ret = 0;
+    int ov[MAX_SUBSTRINGS];
+      //by clx 20171113 之前注册了相关正则，这里进行正则的匹配，并将
+      //名称，描述，优先级解析出来。
+    ret = pcre_exec(regex, regex_study, rawstr, strlen(rawstr), 0, 0, ov, 30);
+    if (ret &lt; 0) {
+
+        SCLogError(SC_ERR_INVALID_SIGNATURE, &quot;Invalid Classtype in &quot;
+                &quot;classification.config file&quot;);
+        goto error;
+    }
+
+    /* retrieve the classtype name */
+    ret = pcre_copy_substring((char *)rawstr, ov, 30, 1, ct_name, sizeof(ct_name));
+    if (ret &lt; 0) {
+
+        SCLogInfo(&quot;pcre_copy_substring() failed&quot;);
+        goto error;
+    }
+
+    /* retrieve the classtype description */
+    ret = pcre_copy_substring((char *)rawstr, ov, 30, 2, ct_desc, sizeof(ct_desc));
+    if (ret &lt; 0) {
+
+        SCLogInfo(&quot;pcre_copy_substring() failed&quot;);
+        goto error;
+    }
+
+    /* retrieve the classtype priority */
+    ret = pcre_copy_substring((char *)rawstr, ov, 30, 3, ct_priority_str, sizeof(ct_priority_str));
+    if (ret &lt; 0) {
+
+        SCLogInfo(&quot;pcre_copy_substring() failed&quot;);
+        goto error;
+    }
+    if (strlen(ct_priority_str) == 0) {
+
+        goto error;
+    }
+
+    ct_priority = atoi(ct_priority_str);
+      // by clx 20171113 创建一个对象，并将其加入hash表中。
+    /* Create a new instance of the parsed Classtype string */
+    ct_new = SCClassConfAllocClasstype(ct_id, ct_name, ct_desc, ct_priority);
+    if (ct_new == NULL)
+        goto error;
+
+    /* Check if the Classtype is present in the HashTable.  In case it&#39;s present
+     * ignore it, as it is a duplicate.  If not present, add it to the table */
+    ct_lookup = HashTableLookup(de_ctx-&gt;class_conf_ht, ct_new, 0);
+    if (ct_lookup == NULL) {
+
+        if (HashTableAdd(de_ctx-&gt;class_conf_ht, ct_new, 0) &lt; 0)
+            SCLogDebug(&quot;HashTable Add failed&quot;);
+    } else {
+
+        SCLogDebug(&quot;Duplicate classtype found inside classification.config&quot;);
+        if (ct_new-&gt;classtype_desc) SCFree(ct_new-&gt;classtype_desc);
+        if (ct_new-&gt;classtype) SCFree(ct_new-&gt;classtype);
+        SCFree(ct_new);
+    }
+
+    return 0;
+
+error:
+    return -1;
+}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">SCRConfLoadReferenceConfigFile
+&nbsp; &nbsp;与classfication类似</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>开源引擎借鉴<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>参考文献<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <blockquote>
-<div>支持协议维度识别和解析
-协议识别、解析插件化
-特征区分服务端和客户端</div></blockquote>
+<div><a class="reference external" href="http://blog.csdn.net/vevenlcf/article/details/50600324">http://blog.csdn.net/vevenlcf/article/details/50600324</a></div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>开源引擎借鉴<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">支持协议维度识别和解析</div>
+<div class="line">协议识别、解析插件化</div>
+<div class="line">特征区分服务端和客户端</div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
