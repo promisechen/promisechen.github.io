@@ -20,7 +20,11 @@ suricata4.0.1源码分析
   | ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nfqueue --enable-lua
 
 
+<<<<<<< HEAD
 当前进度：开始分析PostConfLoadedDetectSetup->DetectEngineCtxInitReal->ActionInitConfig
+=======
+当前进度：开始分析PostConfLoadedSetup->MayDaemonize
+>>>>>>> 0b6744533e3fa724b7fd4af7b05fc93a27b97fb6
 
 
 概述及全局观览
@@ -563,6 +567,7 @@ PostConfLoadedSetup
     * AppLayerParserPostStreamSetup todo:暂不看tcp流重组的细节
     * AppLayerRegisterGlobalCounters todo:设置一些计数配置，后面研究下咋用的。
 
+<<<<<<< HEAD
 PostConfLoadedDetectSetup
 ***************************
 
@@ -741,6 +746,8 @@ PostConfLoadedDetectSetup
    * SCRConfLoadReferenceConfigFile 
         与classfication类似  
 
+=======
+>>>>>>> 0b6744533e3fa724b7fd4af7b05fc93a27b97fb6
 参考文献
 --------------
       http://blog.csdn.net/vevenlcf/article/details/50600324
